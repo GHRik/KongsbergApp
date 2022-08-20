@@ -7,6 +7,7 @@
 #include "headers/MessageQueue.hpp"
 #include "headers/SensorMenager.hpp"
 #include "headers/ListenerMenager.hpp"
+#include "headers/Sensor.hpp"
 
 int main()
 {
@@ -19,6 +20,7 @@ int main()
     common::MessageQueue messageQueue(&logger, &lifeCycle);
     common::SensorMenager sensorMenager(&logger, &lifeCycle, &configLoader, &messageQueue);
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
+    sensorLayer::Sensor Sensor(&sensorMenager);
 
 
 

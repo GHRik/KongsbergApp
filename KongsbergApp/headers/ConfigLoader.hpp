@@ -3,7 +3,6 @@
 #include "../interfaces/iConfigMenager.hpp"
 #include "../interfaces/iLifeCycleMenager.hpp"
 #include "../interfaces/iLogger.hpp"
-#include "../interfaces/iStreamMenager.hpp"
 
 
 namespace common
@@ -11,7 +10,7 @@ namespace common
 	class ConfigLoader : public interface::iConfigMenager, public interface::iLifeCycleService
 	{
 	public:
-		ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iStreamMenager* streamMenager);
+		ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
 		virtual ~ConfigLoader();
 		uint8_t getNumberAliveSensors();
 		std::vector<int> getAliveSensorsID();
@@ -25,7 +24,6 @@ namespace common
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;
-		interface::iStreamMenager* streamMenager;
 		utils::Status status;
 
 	};

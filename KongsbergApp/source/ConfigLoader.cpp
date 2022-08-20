@@ -1,10 +1,9 @@
 #include "../headers/ConfigLoader.hpp"
 
-common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iStreamMenager* streamMenager)
+common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager)
 {
 	this->logger = logger;
 	this->lifeCycleMenager = lifeCycleMenager;
-	this->streamMenager = streamMenager;
 	this->lifeCycleMenager->registry(this);
 }
 

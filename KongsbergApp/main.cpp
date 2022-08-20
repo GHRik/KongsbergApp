@@ -3,6 +3,8 @@
 #include "headers/Logger.hpp"
 #include "headers/LifeCycle.hpp"
 #include "headers/StreamMenager.hpp"
+#include "headers/ConfigLoader.hpp"
+#include "headers/MessageQueue.hpp"
 
 int main()
 {
@@ -11,6 +13,9 @@ int main()
     common::Logger logger;
     common::LifeCycle lifeCycle(&logger);
     common::StreamMenager streamMenager(&logger, &lifeCycle);
+    common::ConfigLoader configLoader(&logger, &lifeCycle, &streamMenager);
+    common::MessageQueue messageQueue(&logger, &lifeCycle);
+
 
 
 

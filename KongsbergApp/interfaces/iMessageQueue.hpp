@@ -2,15 +2,16 @@
 
 #include <string>
 #include "../utils/ErrorCode.hpp"
+#include "../utils/queue_id.hpp"
 
 namespace interface
 {
-	class iMessageQeueu
+	class iMessageQueue
 	{
 	public:
-		iMessageQeueu(){};
-		virtual ~iMessageQeueu(){};
-		virtual utils::ErrorCode pushQueue( std::string message ) = 0;
-		virtual utils::ErrorCode popQueue(std::string message) = 0;
+		iMessageQueue(){};
+		virtual ~iMessageQueue(){};
+		virtual utils::ErrorCode pushQueue(utils::queue_id id, std::string message ) = 0;
+		virtual utils::ErrorCode popQueue( utils::queue_id id, std::string message) = 0;
 	};
 };

@@ -7,16 +7,29 @@ common::LifeCycle::LifeCycle(interface::iLogger* logger)
 
 common::LifeCycle::~LifeCycle()
 {
+	this->stop();
 }
 
 utils::ErrorCode common::LifeCycle::run()
 {
-	return utils::ErrorCode::NOK;
+	for (int i = 0; i < wantToBeAlive.size(); ++i)
+	{
+		wantToBeAlive.at(i)->setStatus(utils::Status::START);
+		wantToBeAlive.at(i)->run();
+
+
+	}
+	return utils::ErrorCode::OK;
 }
 
 utils::ErrorCode common::LifeCycle::stop()
 {
-	return utils::ErrorCode::NOK;
+	for (int i = 0; i < wantToBeAlive.size(); ++i)
+	{
+
+		wantToBeAlive.at(i)->setStatus(utils::Status::STOP);
+	}
+	return utils::ErrorCode::OK;
 }
 
 

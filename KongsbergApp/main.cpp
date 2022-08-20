@@ -8,6 +8,7 @@
 #include "headers/SensorMenager.hpp"
 #include "headers/ListenerMenager.hpp"
 #include "headers/Sensor.hpp"
+#include "headers/Listener.hpp"
 
 int main()
 {
@@ -21,6 +22,7 @@ int main()
     common::SensorMenager sensorMenager(&logger, &lifeCycle, &configLoader, &messageQueue);
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
     sensorLayer::Sensor Sensor(&sensorMenager);
+    listenerLayer::Listener Listener(&listenerMenager);
 
 
 

@@ -11,9 +11,7 @@ namespace common
 	{
 	public:
 		MessageQueue(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
-		virtual ~MessageQueue();
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::Status getStatus();
+		virtual ~MessageQueue();;
 		utils::ErrorCode run();
 
 		utils::ErrorCode pushQueue(utils::queue_id id, std::string message);

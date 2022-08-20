@@ -14,8 +14,6 @@ namespace common
 		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configMenager, interface::iMessageQueue* messageQueue);
 		~SensorMenager();
 
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::Status getStatus();
 		utils::ErrorCode run();
 
 		utils::ErrorCode registerSensor(iSensorMenager* sensorMenager);

@@ -13,16 +13,6 @@ common::ListenerMenager::~ListenerMenager()
 
 }
 
-utils::Status common::ListenerMenager::getStatus()
-{
-	return utils::Status::START;
-}
-
-utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
-{
-	return utils::ErrorCode::NOK;
-}
-
 utils::ErrorCode common::ListenerMenager::run()
 {
 	return utils::ErrorCode::NOK;

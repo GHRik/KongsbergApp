@@ -10,8 +10,7 @@ namespace sensorLayer
 	public:
 		Sensor( interface::iSensorMenager* sensorMenager);
 		virtual  ~Sensor();
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::Status getStatus();
+
 		utils::ErrorCode run();
 	private:
 		interface::iSensorMenager* sensorMenager;

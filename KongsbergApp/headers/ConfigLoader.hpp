@@ -18,8 +18,6 @@ namespace common
 		std::vector<int> getAliveSensorsMax();
 		std::vector<int> getAliveSensorsFreq();
 
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::Status getStatus();
 		utils::ErrorCode run();
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;

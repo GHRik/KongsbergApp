@@ -127,7 +127,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="KongsbergApp.cpp" />
+    <ClCompile Include="interfaces\iLifeCycleService.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\ConfigLoader.cpp" />
+    <ClCompile Include="source\LifeCycle.cpp" />
+    <ClCompile Include="source\Listener.cpp" />
+    <ClCompile Include="source\ListenerMenager.cpp" />
+    <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\MessageQueue.cpp" />
+    <ClCompile Include="source\Sensor.cpp" />
+    <ClCompile Include="source\SensorMenager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\ConfigLoader.hpp" />
+    <ClInclude Include="headers\LifeCycle.hpp" />
+    <ClInclude Include="headers\Listener.hpp" />
+    <ClInclude Include="headers\ListenerMenager.hpp" />
+    <ClInclude Include="headers\Logger.hpp" />
+    <ClInclude Include="headers\MessageQueue.hpp" />
+    <ClInclude Include="headers\Sensor.hpp" />
+    <ClInclude Include="headers\SensorMenager.hpp" />
+    <ClInclude Include="interfaces\iConfigMenager.hpp" />
+    <ClInclude Include="interfaces\iLifeCycleMenager.hpp" />
+    <ClInclude Include="interfaces\iLifeCycleService.hpp" />
+    <ClInclude Include="interfaces\iListenerMenager.hpp" />
+    <ClInclude Include="interfaces\iListenerService.hpp" />
+    <ClInclude Include="interfaces\iLogger.hpp" />
+    <ClInclude Include="interfaces\iMessageQueue.hpp" />
+    <ClInclude Include="interfaces\iSensorMenager.hpp" />
+    <ClInclude Include="interfaces\iSensorService.hpp" />
+    <ClInclude Include="utils\ErrorCode.hpp" />
+    <ClInclude Include="utils\queue_id.hpp" />
+    <ClInclude Include="utils\Status.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

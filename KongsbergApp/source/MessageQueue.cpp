@@ -12,16 +12,6 @@ common::MessageQueue::MessageQueue(interface::iLogger* logger, interface::iLifeC
 	lifeCycleMenager->registry(this);
 }
 
-utils::ErrorCode common::MessageQueue::setStatus(utils::Status status)
-{
-	return utils::ErrorCode();
-}
-
-utils::Status common::MessageQueue::getStatus()
-{
-	return utils::Status();
-}
-
 utils::ErrorCode common::MessageQueue::run()
 {
 	return utils::ErrorCode();

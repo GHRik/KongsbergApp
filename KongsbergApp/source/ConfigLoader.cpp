@@ -36,16 +36,6 @@ std::vector<int> common::ConfigLoader::getAliveSensorsFreq()
 	return std::vector<int>();
 }
 
-utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
-{
-	return utils::ErrorCode();
-}
-
-utils::Status common::ConfigLoader::getStatus()
-{
-	return utils::Status();
-}
-
 utils::ErrorCode common::ConfigLoader::run()
 {
 	return utils::ErrorCode();

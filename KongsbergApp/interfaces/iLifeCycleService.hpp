@@ -10,11 +10,7 @@ namespace interface
 	public:
 		iLifeCycleService(){};
 		virtual ~iLifeCycleService(){};
-		virtual utils::ErrorCode setStatus(utils::Status status)
-		{
-			this->status = status;
-			return utils::ErrorCode::OK;
-		}
+		virtual utils::ErrorCode setStatus(utils::Status status) = 0;
 		virtual utils::Status getStatus()
 		{
 			return this->status;

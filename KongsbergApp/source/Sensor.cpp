@@ -15,3 +15,8 @@ utils::ErrorCode sensorLayer::Sensor::run()
 {
 	return utils::ErrorCode::NOK;
 }
+
+utils::ErrorCode sensorLayer::Sensor::setStatus(utils::Status status)
+{
+	return utils::ErrorCode();
+}

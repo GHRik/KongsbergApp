@@ -10,6 +10,7 @@ namespace listenerLayer
 		Listener(interface::iListenerMenager* ListenerMenager);
 		virtual  ~Listener();
 		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status);
 	private:
 		interface::iListenerMenager* ListenerMenager;
 		utils::Status status;

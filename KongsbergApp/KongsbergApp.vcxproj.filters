@@ -42,9 +42,6 @@
     <ClCompile Include="source\MessageQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="interfaces\iLifeCycleService.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="interfaces\iLifeCycleMenager.hpp">

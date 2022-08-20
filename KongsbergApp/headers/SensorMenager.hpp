@@ -15,6 +15,7 @@ namespace common
 		~SensorMenager();
 
 		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status);
 
 		utils::ErrorCode registerSensor(iSensorMenager* sensorMenager);
 		utils::ErrorCode pushNotPreparedMessage(std::string message);

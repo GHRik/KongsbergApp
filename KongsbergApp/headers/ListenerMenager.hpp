@@ -13,6 +13,7 @@ namespace common
 		ListenerMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iMessageQueue* messageQueue);
 		~ListenerMenager();
 
+		utils::ErrorCode setStatus(utils::Status status);
 		utils::ErrorCode run();
 
 		utils::ErrorCode registerListener(interface::iListenerMenager* listenerMenager);

@@ -15,3 +15,8 @@ utils::ErrorCode listenerLayer::Listener::run()
 {
 	return utils::ErrorCode::NOK;
 }
+
+utils::ErrorCode listenerLayer::Listener::setStatus(utils::Status status)
+{
+	return utils::ErrorCode();
+}

@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="interfaces\iLifeCycleService.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="source\ConfigLoader.cpp" />
     <ClCompile Include="source\LifeCycle.cpp" />

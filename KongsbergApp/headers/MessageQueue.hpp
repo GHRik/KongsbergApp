@@ -13,6 +13,7 @@ namespace common
 		MessageQueue(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
 		virtual ~MessageQueue();;
 		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status);
 
 		utils::ErrorCode pushQueue(utils::queue_id id, std::string message);
 		utils::ErrorCode popQueue(utils::queue_id id, std::string message);

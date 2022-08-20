@@ -17,6 +17,11 @@ utils::ErrorCode common::MessageQueue::run()
 	return utils::ErrorCode();
 }
 
+utils::ErrorCode common::MessageQueue::setStatus(utils::Status status)
+{
+	return utils::ErrorCode();
+}
+
 utils::ErrorCode common::MessageQueue::popQueue(utils::queue_id id, std::string message)
 {
 	return utils::ErrorCode();

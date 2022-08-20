@@ -22,6 +22,8 @@ int main()
     sensorLayer::Sensor Sensor(&sensorMenager);
     listenerLayer::Listener Listener(&listenerMenager);
 
+    lifeCycle.stop();
+
 
 
 }

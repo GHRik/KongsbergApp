@@ -20,6 +20,11 @@ utils::ErrorCode common::SensorMenager::run()
 	return utils::ErrorCode::NOK;
 }
 
+utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
+{
+	return utils::ErrorCode();
+}
+
 utils::ErrorCode common::SensorMenager::registerSensor(iSensorMenager* sensorMenager)
 {
 	return utils::ErrorCode::NOK;

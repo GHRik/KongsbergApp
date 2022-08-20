@@ -40,3 +40,8 @@ utils::ErrorCode common::ConfigLoader::run()
 {
 	return utils::ErrorCode();
 }
+
+utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
+{
+	return utils::ErrorCode();
+}

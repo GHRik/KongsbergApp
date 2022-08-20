@@ -12,7 +12,7 @@ namespace interface
 		virtual ~iSensorMenager(){};
 		virtual utils::ErrorCode registerListener(iSensorMenager* sensorMenager) = 0;
 		virtual utils::ErrorCode pushNotPreparedMessage(std::string message) = 0;
-		virtual utils::ErrorCode run() = 0;
+		virtual utils::ErrorCode runSensor() = 0;
 
 	};
 };

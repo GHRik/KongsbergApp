@@ -17,7 +17,7 @@ int main()
     common::StreamMenager streamMenager(&logger, &lifeCycle);
     common::ConfigLoader configLoader(&logger, &lifeCycle, &streamMenager);
     common::MessageQueue messageQueue(&logger, &lifeCycle);
-    common::SensorMenager sensorMenager(&logger, &lifeCycle, &messageQueue);
+    common::SensorMenager sensorMenager(&logger, &lifeCycle, &configLoader, &messageQueue);
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
 
 

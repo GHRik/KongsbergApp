@@ -4,13 +4,14 @@
 #include "../interfaces/iMessageQueue.hpp"
 #include "../interfaces/iLifeCycleMenager.hpp"
 #include "../interfaces/iLogger.hpp"
+#include "../interfaces/iConfigMenager.hpp"
 
 namespace common
 {
 	class SensorMenager : public interface::iSensorMenager, public interface::iLifeCycleService
 	{
 	public:
-		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iMessageQueue* messageQueue);
+		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager configMenager, interface::iMessageQueue* messageQueue);
 		~SensorMenager();
 
 		utils::ErrorCode setStatus(utils::Status status);
@@ -24,6 +25,7 @@ namespace common
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;
 		interface::iMessageQueue* messageQueue;
+		interface::iConfigMenager* configMenager;
 		utils::Status status;
 	};
 }

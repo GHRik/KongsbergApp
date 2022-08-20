@@ -22,17 +22,4 @@ utils::ErrorCode common::Logger::logInfo(std::string tag, std::string message)
 	return utils::ErrorCode::NOK;
 }
 
-utils::ErrorCode common::Logger::run()
-{
-	return utils::ErrorCode::NOK;
-}
-
-void common::Logger::stop()
-{
-}
-
-void common::Logger::passLifeCycle(interface::iLifeCycleMenager* lifeCycleMenager)
-{
-}
-
 

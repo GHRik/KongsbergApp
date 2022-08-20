@@ -7,7 +7,7 @@
 
 namespace common
 {
-	class Logger : public interface::iLogger, public interface::iLifeCycleService
+	class Logger : public interface::iLogger
 	{
 	public:
 		Logger();
@@ -15,13 +15,7 @@ namespace common
 		utils::ErrorCode logError(std::string tag, std::string message);
 		utils::ErrorCode logWarn(std::string tag, std::string message);
 		utils::ErrorCode logInfo(std::string tag, std::string message);
-		utils::ErrorCode run();
 		void stop();
-		void passLifeCycle(interface::iLifeCycleMenager* lifeCycleMenager);
-
-	private:
-		interface::iLifeCycleMenager* lifeCycleMenager;
-		utils::Status status;
 
 	};
 }

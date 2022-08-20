@@ -17,7 +17,7 @@ namespace common
 		utils::Status getStatus();
 		utils::ErrorCode run();
 
-		utils::ErrorCode registerListener(iSensorMenager* sensorMenager);
+		utils::ErrorCode registerSensor(iSensorMenager* sensorMenager);
 		utils::ErrorCode pushNotPreparedMessage(std::string message);
 		utils::ErrorCode runSensor();
 	private:

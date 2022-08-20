@@ -29,7 +29,7 @@ utils::ErrorCode common::SensorMenager::run()
 	return utils::ErrorCode::NOK;
 }
 
-utils::ErrorCode common::SensorMenager::registerListener(iSensorMenager* sensorMenager)
+utils::ErrorCode common::SensorMenager::registerSensor(iSensorMenager* sensorMenager)
 {
 	return utils::ErrorCode::NOK;
 }

@@ -15,7 +15,8 @@ namespace common
 		utils::ErrorCode logError(std::string tag, std::string message);
 		utils::ErrorCode logWarn(std::string tag, std::string message);
 		utils::ErrorCode logInfo(std::string tag, std::string message);
-		void stop();
+	private:
+		std::string logEvent(std::string tag, std::string message);
 
 	};
 }

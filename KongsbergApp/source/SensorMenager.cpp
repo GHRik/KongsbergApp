@@ -1,6 +1,6 @@
 #include "../headers/SensorMenager.hpp"
 
-common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager configMenagfer, interface::iMessageQueue* messageQueue)
+common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configMenagfer, interface::iMessageQueue* messageQueue)
 {
 	this->logger = logger;
 	this->lifeCycleMenager = lifeCycleMenager;

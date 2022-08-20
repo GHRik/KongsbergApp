@@ -11,7 +11,7 @@ namespace common
 	class SensorMenager : public interface::iSensorMenager, public interface::iLifeCycleService
 	{
 	public:
-		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager configMenager, interface::iMessageQueue* messageQueue);
+		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configMenager, interface::iMessageQueue* messageQueue);
 		~SensorMenager();
 
 		utils::ErrorCode setStatus(utils::Status status);

@@ -22,7 +22,24 @@ utils::ErrorCode common::SensorMenager::run()
 
 utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 {
-	return utils::ErrorCode();
+	switch (status)
+	{
+	case utils::Status::INIT:
+		this->status = utils::Status::INIT;
+		break;
+	case utils::Status::START:
+		this->status = utils::Status::START;
+		this->run();
+		break;
+	case utils::Status::WORK:
+		this->status = utils::Status::WORK;
+		break;
+	case utils::Status::STOP:
+		this->status = utils::Status::STOP;
+		break;
+
+	}
+	return utils::ErrorCode::OK;
 }
 
 utils::ErrorCode common::SensorMenager::registerSensor(iSensorMenager* sensorMenager)

@@ -14,7 +14,7 @@ namespace common
 		virtual ~MessageQueue();;
 
 		utils::ErrorCode pushQueue(uint8_t id, int message);
-		int popQueue(uint8_t id, int message);
+		int popQueue(uint8_t id);
 
 		
 	};

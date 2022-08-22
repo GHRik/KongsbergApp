@@ -10,8 +10,8 @@ namespace interface
 	public:
 		iListenerMenager(){};
 		virtual ~iListenerMenager(){};
-		virtual utils::ErrorCode registerListener(iListenerMenager* listenerMenager) = 0;
-		virtual std::string popNotPreparedMessage() = 0;
+		virtual utils::ErrorCode registerListener(iListenerService* listenerService) = 0;
+		virtual int popNotPreparedMessage(uint8_t id) = 0;
 		virtual utils::ErrorCode pushPreparedMessage(uint8_t id, int message) = 0;
 		virtual utils::ErrorCode runListener() = 0;
 

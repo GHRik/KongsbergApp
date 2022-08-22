@@ -12,7 +12,7 @@ namespace interface
 		iMessageQueue(){};
 		virtual ~iMessageQueue(){};
 		virtual utils::ErrorCode pushQueue(uint8_t id, int message ) = 0;
-		virtual int popQueue( uint8_t id, int message) = 0;
+		virtual int popQueue( uint8_t id) = 0;
 
 		std::vector<std::vector<int>> queue;
 	};

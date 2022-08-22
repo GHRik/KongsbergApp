@@ -17,5 +17,6 @@ namespace interface
 		virtual std::vector<int> getAliveSensorsMin() = 0;
 		virtual std::vector<int> getAliveSensorsMax() = 0;
 		virtual std::vector<int> getAliveSensorsFreq() = 0;
+		virtual std::vector<std::string> getAliveSensorsName() = 0;
 	};
 };

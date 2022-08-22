@@ -22,6 +22,7 @@ namespace common
 		std::vector<int> getAliveSensorsMin();
 		std::vector<int> getAliveSensorsMax();
 		std::vector<int> getAliveSensorsFreq();
+		std::vector <std::string> getAliveSensorsName();
 
 		utils::ErrorCode setStatus(utils::Status status);
 		utils::ErrorCode run();

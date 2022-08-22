@@ -10,7 +10,7 @@ common::MessageQueue::MessageQueue()
 
 }
 
-int common::MessageQueue::popQueue(uint8_t id, int message)
+int common::MessageQueue::popQueue(uint8_t id)
 {
 
 	queue.at(id).pop_back();

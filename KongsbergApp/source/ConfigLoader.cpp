@@ -36,6 +36,11 @@ std::vector<int> common::ConfigLoader::getAliveSensorsFreq()
 	return aliveSensorsFreq;
 }
 
+std::vector<std::string> common::ConfigLoader::getAliveSensorsName()
+{
+	return aliveSensorsName;
+}
+
 
 utils::ErrorCode common::ConfigLoader::run()
 {
@@ -162,10 +167,10 @@ utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
 	{
 	case utils::Status::INIT:
 		this->status = utils::Status::INIT;
+		this->run();
 		break;
 	case utils::Status::START:
 		this->status = utils::Status::START;
-		this->run();
 		break;
 	case utils::Status::WORK:
 		this->status = utils::Status::WORK;

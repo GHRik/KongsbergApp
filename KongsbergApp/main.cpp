@@ -18,9 +18,7 @@ int main()
     common::ConfigLoader configLoader(&logger, &lifeCycle);
     common::MessageQueue messageQueue;
     common::SensorMenager sensorMenager(&logger, &lifeCycle, &configLoader, &messageQueue);
-    common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
-    sensorLayer::Sensor Sensor(&sensorMenager);
-    listenerLayer::Listener Listener(&listenerMenager);
+    common::ListenerMenager listenerMenager(&logger, &lifeCycle, &configLoader, &messageQueue); 
     
     if (lifeCycle.run() == utils::ErrorCode::OK)
     {

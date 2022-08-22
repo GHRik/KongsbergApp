@@ -16,7 +16,7 @@ int main()
     common::Logger logger;
     common::LifeCycle lifeCycle(&logger);
     common::ConfigLoader configLoader(&logger, &lifeCycle);
-    common::MessageQueue messageQueue(&logger, &lifeCycle);
+    common::MessageQueue messageQueue;
     common::SensorMenager sensorMenager(&logger, &lifeCycle, &configLoader, &messageQueue);
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
     sensorLayer::Sensor Sensor(&sensorMenager);

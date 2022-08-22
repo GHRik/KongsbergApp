@@ -7,24 +7,16 @@
 
 namespace common
 {
-	class MessageQueue : public interface::iLifeCycleService, public interface::iMessageQueue
+	class MessageQueue : public interface::iMessageQueue
 	{
 	public:
-		MessageQueue(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
+		MessageQueue();
 		virtual ~MessageQueue();;
-		utils::ErrorCode run();
-		utils::ErrorCode setStatus(utils::Status status);
 
 		utils::ErrorCode pushQueue(utils::queue_id id, std::string message);
 		utils::ErrorCode popQueue(utils::queue_id id, std::string message);
 
 		std::vector<std::string> queueNotPrepare;
 		std::vector<std::string> queuePrepared;
-
-
-	private:
-		interface::iLifeCycleMenager* lifeCycleMenager;
-		interface::iLogger* logger;
-		utils::Status status;
 	};
 }

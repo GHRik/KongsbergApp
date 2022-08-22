@@ -13,10 +13,9 @@ namespace common
 		MessageQueue();
 		virtual ~MessageQueue();;
 
-		utils::ErrorCode pushQueue(utils::queue_id id, std::string message);
-		utils::ErrorCode popQueue(utils::queue_id id, std::string message);
+		utils::ErrorCode pushQueue(uint8_t id, int message);
+		utils::ErrorCode popQueue(uint8_t id, int message);
 
-		std::vector<std::string> queueNotPrepare;
-		std::vector<std::string> queuePrepared;
+		
 	};
 }

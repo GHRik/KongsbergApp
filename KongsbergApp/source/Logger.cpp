@@ -29,7 +29,7 @@ utils::ErrorCode common::Logger::logInfo(std::string tag, std::string message)
 std::string common::Logger::logEvent(std::string tag, std::string message)
 {
 	std::string result = "";
-	result += tag + "\t" + "message";
+	result += tag + "\t" + message + "\n";
 	return result;
 
 }

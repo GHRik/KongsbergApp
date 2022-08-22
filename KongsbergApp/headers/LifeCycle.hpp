@@ -19,6 +19,9 @@ namespace common
         utils::ErrorCode registry(interface::iLifeCycleService* service);
 
     private:
+        bool isAllServicesInStatus(utils::Status status);
+        utils::ErrorCode setAllServicesInStatus(utils::Status status);
+
         std::vector<interface::iLifeCycleService* > wantToBeAlive;
         interface::iLogger* logger;
         utils::Status status;

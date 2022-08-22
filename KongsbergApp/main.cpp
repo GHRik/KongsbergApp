@@ -21,6 +21,20 @@ int main()
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &messageQueue);
     sensorLayer::Sensor Sensor(&sensorMenager);
     listenerLayer::Listener Listener(&listenerMenager);
+    
+    if (lifeCycle.run() == utils::ErrorCode::OK)
+    {
+        int a = -1;
+        while (std::cin >> a)
+        {
+            if (a == 0)
+            {
+                break;
+            }
+        }
+    }
+
+
 
     lifeCycle.stop();
 

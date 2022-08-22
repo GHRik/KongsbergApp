@@ -3,6 +3,11 @@
 #include "../interfaces/iConfigMenager.hpp"
 #include "../interfaces/iLifeCycleMenager.hpp"
 #include "../interfaces/iLogger.hpp"
+#include "../utils/config.hpp"
+#include <fstream>
+#include "../include/nlohmann/json.hpp"
+#include <unordered_map>
+#include <sstream>
 
 
 namespace common
@@ -24,6 +29,18 @@ namespace common
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;
 		utils::Status status;
+		std::string content;
+
+		std::vector<int> aliveSensorsID;
+		std::vector<int> aliveSensorsMin;
+		std::vector<int> aliveSensorsMax;
+		std::vector<int> aliveSensorsFreq;
+		std::vector<std::string> aliveSensorsName;
+		uint8_t aliveSensorsAmount;
+
+		void translateConfig(std::vector<std::vector<std::string>> configToTranslate);
+		bool isConfigValid(std::vector<std::vector<std::string>> configToValid);
+		bool is_number(const std::string& s);
 
 	};
 }

@@ -43,6 +43,8 @@ utils::ErrorCode common::ConfigLoader::run()
 	std::ifstream f(utils::CONFIG_FILE);
 	std::stringstream buffer;
 	buffer << f.rdbuf();
+	f.close();
+	f.open(utils::CONFIG_FILE);
 
 	if (nlohmann::json::accept(buffer) == false)
 	{
@@ -51,6 +53,7 @@ utils::ErrorCode common::ConfigLoader::run()
 	}
 
 	nlohmann::json data = nlohmann::json::parse(f);
+	f.close();
 
 	for (auto it = data.begin(); it != data.end(); ++it)
 	{
@@ -105,33 +108,38 @@ bool common::ConfigLoader::isConfigValid(std::vector<std::vector<std::string>> c
 {
 	for (int i = 0; i < configToValid.size(); ++i)
 	{
-		if(is_number(configToValid.at(i).at(utils::ID_PLACE)) == false)
+		if (is_number(configToValid.at(i).at(utils::ID_PLACE)) == false)
 		{
 			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " is not number");
 			return false;
-			if (is_number(configToValid.at(i).at(utils::MIN_PLACE)) == false)
-			{
-				logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MIN_PLACE) + " is not number");
-				return false;
-				if (is_number(configToValid.at(i).at(utils::MAX_PLACE)) == false)
-				{
-					logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MAX_PLACE) + " is not number");
-					return false;
-					if (is_number(configToValid.at(i).at(utils::FREQ_PLACE)) == false)
-					{
-						logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::FREQ_PLACE) + " is not number");
-						return false;
-					}
-				}
-			}
 		}
-	}
+		if (is_number(configToValid.at(i).at(utils::MIN_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MIN_PLACE) + " is not number");
+			return false;
+		}
+		if (is_number(configToValid.at(i).at(utils::MAX_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MAX_PLACE) + " is not number");
+			return false;
+		}
+		if (is_number(configToValid.at(i).at(utils::FREQ_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::FREQ_PLACE) + " is not number");
+			return false;
+		}
+	}	
+				
 	return true;
 }
 
 bool common::ConfigLoader::is_number(const std::string& s)
 {
 	std::string::const_iterator it = s.begin();
+	if (it == s.begin() && * s.begin() == '-')
+	{
+		++it;
+	}
 	while (it != s.end() && std::isdigit(*it)) ++it;
 	return !s.empty() && it == s.end();
 }

@@ -10,13 +10,16 @@ common::MessageQueue::MessageQueue()
 
 }
 
-utils::ErrorCode common::MessageQueue::popQueue(uint8_t id, int message)
+int common::MessageQueue::popQueue(uint8_t id, int message)
 {
-	return utils::ErrorCode();
+
+	queue.at(id).pop_back();
+	return queue.at(id).back();
 }
 
 utils::ErrorCode common::MessageQueue::pushQueue(uint8_t id, int message)
 {
+	queue.at(id).push_back(message);
 	return utils::ErrorCode();
 }
 

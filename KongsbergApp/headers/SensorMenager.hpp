@@ -18,7 +18,7 @@ namespace common
 		utils::ErrorCode setStatus(utils::Status status);
 
 		utils::ErrorCode registerSensor(iSensorMenager* sensorMenager);
-		utils::ErrorCode pushNotPreparedMessage(std::string message);
+		utils::ErrorCode pushNotPreparedMessage(uint8_t id, int message);
 		utils::ErrorCode runSensor();
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;

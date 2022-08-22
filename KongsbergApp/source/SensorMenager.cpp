@@ -30,7 +30,7 @@ utils::ErrorCode common::SensorMenager::registerSensor(iSensorMenager* sensorMen
 	return utils::ErrorCode::NOK;
 }
 
-utils::ErrorCode common::SensorMenager::pushNotPreparedMessage(std::string message)
+utils::ErrorCode common::SensorMenager::pushNotPreparedMessage(uint8_t id, int message)
 {
 	return utils::ErrorCode::NOK;
 }

@@ -12,7 +12,7 @@ namespace interface
 		virtual ~iListenerMenager(){};
 		virtual utils::ErrorCode registerListener(iListenerMenager* listenerMenager) = 0;
 		virtual std::string popNotPreparedMessage() = 0;
-		virtual utils::ErrorCode pushPreparedMessage(std::string) = 0;
+		virtual utils::ErrorCode pushPreparedMessage(uint8_t id, int message) = 0;
 		virtual utils::ErrorCode runListener() = 0;
 
 	};

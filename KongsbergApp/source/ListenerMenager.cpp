@@ -33,7 +33,7 @@ std::string common::ListenerMenager::popNotPreparedMessage()
 	return "";
 }
 
-utils::ErrorCode common::ListenerMenager::pushPreparedMessage(std::string message)
+utils::ErrorCode common::ListenerMenager::pushPreparedMessage(uint8_t id, int message)
 {
 	return utils::ErrorCode::NOK;
 }

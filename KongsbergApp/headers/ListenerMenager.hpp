@@ -18,7 +18,7 @@ namespace common
 
 		utils::ErrorCode registerListener(interface::iListenerMenager* listenerMenager);
 		std::string popNotPreparedMessage();
-		utils::ErrorCode pushPreparedMessage(std::string);
+		utils::ErrorCode pushPreparedMessage(uint8_t id, int message);
 		utils::ErrorCode runListener();
 
 	private:

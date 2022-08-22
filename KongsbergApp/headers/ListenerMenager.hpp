@@ -31,6 +31,5 @@ namespace common
 		interface::iMessageQueue* messageQueue;
 
 		std::vector<interface::iListenerService*> listenerWantToBeAlive;
-		utils::Status status;
 	};
 }

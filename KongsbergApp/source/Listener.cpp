@@ -1,9 +1,10 @@
 #include "../headers/Listener.hpp"
 
 
-listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, std::string name, int maxValue, int minValue, int frequency)
+listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, int id , std::string name, int maxValue, int minValue, int frequency)
 {
 	this->ListenerMenager = listenerMenager;
+	this->id = id;
 	this->name = name;
 	this->maxValue = maxValue;
 	this->minValue = minValue;
@@ -18,15 +19,17 @@ listenerLayer::Listener::~Listener()
 
 utils::ErrorCode listenerLayer::Listener::run()
 {
-	std::chrono::seconds timespan(this->frequency);
+	std::chrono::milliseconds timespan(10);
 	this->status = utils::Status::WORK;
 	while (this->status == utils::Status::WORK)
 	{
-		std::cout << this->name;
+		std::cout << this->ListenerMenager->popNotPreparedMessage(this->id);
 		std::this_thread::sleep_for(timespan);
 	}
 	return utils::ErrorCode::OK;
 }
+
+//void wrappAndLog
 
 utils::ErrorCode listenerLayer::Listener::setStatus(utils::Status status)
 {
@@ -43,9 +46,12 @@ utils::ErrorCode listenerLayer::Listener::setStatus(utils::Status status)
 		this->status = utils::Status::WORK;
 		break;
 	case utils::Status::STOP:
+		if (this->status == utils::Status::WORK)
+		{
+			this->status = utils::Status::STOP;
+			this->thread.join();
+		}
 		this->status = utils::Status::STOP;
-		this->thread.join();
-
 		break;
 
 	}

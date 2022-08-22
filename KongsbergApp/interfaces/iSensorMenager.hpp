@@ -2,6 +2,7 @@
 
 #include <string>
 #include "../utils/ErrorCode.hpp"
+#include "iSensorService.hpp"
 
 namespace interface
 {
@@ -10,7 +11,7 @@ namespace interface
 	public:
 		iSensorMenager(){};
 		virtual ~iSensorMenager(){};
-		virtual utils::ErrorCode registerSensor(iSensorMenager* sensorMenager) = 0;
+		virtual utils::ErrorCode registerSensor(iSensorService* sensorService) = 0;
 		virtual utils::ErrorCode pushNotPreparedMessage(uint8_t id, int message) = 0;
 		virtual utils::ErrorCode runSensor() = 0;
 

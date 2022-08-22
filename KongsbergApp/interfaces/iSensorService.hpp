@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../interfaces/iSensorMenager.hpp"
 #include "../utils/ErrorCode.hpp"
 #include "../utils/Status.hpp"
 

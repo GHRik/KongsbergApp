@@ -1,11 +1,11 @@
 #include "../headers/SensorMenager.hpp"
 
-common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configMenagfer, interface::iMessageQueue* messageQueue)
+common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue)
 {
 	this->logger = logger;
 	this->lifeCycleMenager = lifeCycleMenager;
 	this->messageQueue = messageQueue;
-	this->configMenager = configMenager;
+	this->configLoader = configLoader;
 	this->lifeCycleMenager->registry(this);
 
 }
@@ -17,7 +17,11 @@ common::SensorMenager::~SensorMenager()
 
 utils::ErrorCode common::SensorMenager::run()
 {
-	return utils::ErrorCode::NOK;
+		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+		{
+			sensorsWantToBeAlive.at(i)->setStatus(utils::Status::START);
+		}
+		return utils::ErrorCode::OK;
 }
 
 utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
@@ -26,6 +30,12 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 	{
 	case utils::Status::INIT:
 		this->status = utils::Status::INIT;
+		for (int i = 0; i < configLoader->getNumberAliveSensors(); ++i)
+		{
+			int id = configLoader->getAliveSensorsID().at(i);
+			int freq = configLoader->getAliveSensorsFreq().at(i);
+			sensorLayer::Sensor* sensor = new sensorLayer::Sensor(this, id, freq);
+		}
 		break;
 	case utils::Status::START:
 		this->status = utils::Status::START;
@@ -33,26 +43,43 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 		break;
 	case utils::Status::WORK:
 		this->status = utils::Status::WORK;
+		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+		{
+			sensorsWantToBeAlive.at(i)->setStatus(utils::Status::WORK);
+		}
 		break;
 	case utils::Status::STOP:
 		this->status = utils::Status::STOP;
+		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+		{
+			sensorsWantToBeAlive.at(i)->setStatus(utils::Status::STOP);
+		}
+		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+		{
+			delete sensorsWantToBeAlive.at(i);
+		}
 		break;
 
 	}
 	return utils::ErrorCode::OK;
 }
 
-utils::ErrorCode common::SensorMenager::registerSensor(iSensorMenager* sensorMenager)
+utils::ErrorCode common::SensorMenager::registerSensor(interface::iSensorService* sensorService)
 {
-	return utils::ErrorCode::NOK;
+	sensorsWantToBeAlive.push_back(sensorService);
+	return utils::ErrorCode::OK;
 }
 
 utils::ErrorCode common::SensorMenager::pushNotPreparedMessage(uint8_t id, int message)
 {
-	return utils::ErrorCode::NOK;
+	return messageQueue->pushQueue(id, message);
 }
 
 utils::ErrorCode common::SensorMenager::runSensor()
 {
-	return utils::ErrorCode::NOK;
+	for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+	{
+		sensorsWantToBeAlive.at(i)->setStatus(utils::Status::INIT);
+	}
+	return utils::ErrorCode::OK;
 }

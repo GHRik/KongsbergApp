@@ -7,14 +7,28 @@ common::MessageQueue::~MessageQueue()
 
 common::MessageQueue::MessageQueue()
 {
+	queue.resize(256);
+	for (int i = 0; i < 256; i++)
+	{
+		queue.at(i).reserve(10000);
+	}
 
 }
 
 int common::MessageQueue::popQueue(uint8_t id)
 {
+	if (queue.at(id).empty())
+	{
+		return 0;
+	}
+	if (queue.at(id).size() == 1)
+	{
+		return queue.at(id).back();
+	}
 
+	int result = queue.at(id).back();
 	queue.at(id).pop_back();
-	return queue.at(id).back();
+	return result;
 }
 
 utils::ErrorCode common::MessageQueue::pushQueue(uint8_t id, int message)

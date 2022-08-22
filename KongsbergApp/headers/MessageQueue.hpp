@@ -4,6 +4,7 @@
 #include "../interfaces/iMessageQueue.hpp"
 #include "../interfaces/iLogger.hpp"
 #include <vector>
+#include "../interfaces/iConfigMenager.hpp"
 
 namespace common
 {

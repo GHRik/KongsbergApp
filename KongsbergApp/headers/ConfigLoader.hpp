@@ -29,7 +29,6 @@ namespace common
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;
-		utils::Status status;
 		std::string content;
 
 		std::vector<int> aliveSensorsID;

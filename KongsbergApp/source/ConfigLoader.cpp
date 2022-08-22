@@ -5,6 +5,7 @@ common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeC
 	this->logger = logger;
 	this->lifeCycleMenager = lifeCycleMenager;
 	this->lifeCycleMenager->registry(this);
+	this->setStatus(utils::Status::INIT);
 }
 
 common::ConfigLoader::~ConfigLoader()

@@ -17,7 +17,7 @@ utils::ErrorCode common::LifeCycle::run()
 		{
 			if (setAllServicesInStatus(utils::Status::WORK) == utils::ErrorCode::OK)
 			{
-				if (isAllServicesInStatus(utils::Status::WORK) == utils::ErrorCode::OK)
+				if (isAllServicesInStatus(utils::Status::WORK) == true)
 				{
 					return utils::ErrorCode::OK;
 				}

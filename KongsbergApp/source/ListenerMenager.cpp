@@ -35,7 +35,7 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 			int min = configLoader->getAliveSensorsMin().at(i);
 			int max = configLoader->getAliveSensorsMax().at(i);
 			int freq = configLoader->getAliveSensorsFreq().at(i);
-			listenerLayer::Listener* listener = new listenerLayer::Listener(this, name, max, min, freq);
+			listenerLayer::Listener* listener = new listenerLayer::Listener(this, id, name, max, min, freq);
 		}
 		runListener();
 		break;
@@ -57,10 +57,10 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 		{
 			listenerWantToBeAlive.at(i)->setStatus(utils::Status::STOP);
 		}
-		/*for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
+		for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
 		{
 			delete listenerWantToBeAlive.at(i);
-		}*/
+		}
 		break;
 
 	}

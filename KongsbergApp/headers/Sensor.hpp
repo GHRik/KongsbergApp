@@ -1,20 +1,24 @@
 #pragma once
 
 
-#include "../interfaces/iSensorService.hpp"
+#include "../interfaces/iSensorMenager.hpp"
+#include <thread>
 
 namespace sensorLayer
 {
 	class Sensor : public interface::iSensorService
 	{
 	public:
-		Sensor( interface::iSensorMenager* sensorMenager);
+		Sensor( interface::iSensorMenager* sensorMenager, int id, int freq);
 		virtual  ~Sensor();
 
 		utils::ErrorCode setStatus(utils::Status status);
 		utils::ErrorCode run();
 	private:
 		interface::iSensorMenager* sensorMenager;
-		utils::Status status;
+		int id;
+		int freq;
+
+		std::thread thread;
 	};
 }

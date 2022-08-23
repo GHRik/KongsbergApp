@@ -146,6 +146,26 @@ bool common::ConfigLoader::isConfigValid(std::vector<std::vector<std::string>> c
 			return false;
 		}
 	}	
+	for (int i = 0; i < configToValid.size(); ++i)
+	{
+		for (int j = 0; j < configToValid.size(); ++j)
+		{
+			if (configToValid.at(i).at(utils::ID_PLACE) == configToValid.at(j).at(utils::ID_PLACE) && i != j)
+			{
+				logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " ID is duplicated");
+				return false;
+			}
+		}
+	}
+
+	for (int i = 0; i < configToValid.size(); ++i)
+	{
+		if (std::stoi(configToValid.at(i).at(utils::ID_PLACE)) >= 255 || std::stoi(configToValid.at(i).at(utils::ID_PLACE)) < 0)
+		{
+			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " ID is >= 255 or < 0");
+			return false;
+		}
+	}
 				
 	return true;
 }

@@ -19,7 +19,6 @@ common::SensorMenager::~SensorMenager()
 			delete sensorsWantToBeAlive.at(i);
 		}
 	}
-
 }
 
 utils::ErrorCode common::SensorMenager::run()

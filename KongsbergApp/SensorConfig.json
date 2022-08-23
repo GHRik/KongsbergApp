@@ -3,7 +3,7 @@
     {
       "ID": 1,
       "Type": "speed",
-      "MinValue": -10,
+      "MinValue": 0,
       "MaxValue": 100,
       "Alive": true,
       "FrequencyHz": 2
@@ -11,16 +11,24 @@
     {
       "ID": 2,
       "Type": "position",
-      "MinValue": -10000"",
-      "MaxValue": 10000,
-      "Alive": false,
+      "MinValue": 0,
+      "MaxValue": 100,
+      "Alive": true,
       "FrequencyHz": 1
     },
     {
       "ID": 3,
       "Type": "depth",
       "MinValue": 0,
-      "MaxValue": 255,
+      "MaxValue": 100,
+      "Alive": true,
+      "FrequencyHz": 10
+    },
+    {
+      "ID": 4,
+      "Type": "depth",
+      "MinValue": 0,
+      "MaxValue": 100,
       "Alive": true,
       "FrequencyHz": 10
     }

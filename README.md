@@ -37,20 +37,48 @@ Example json config you can find in this repo [SensorConfig.json](https://github
 ## Architecture
 
 <p align="center">
-   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/ArchitecturePreview.png" width="50%" height="50%" /><br \>
+   Architecture Perview<br \>
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/ArchitecturePreview.png" width="50%" height="50%" /><br \><br \>
 </p>
+   LifeCycle - module responsible for set other module to init, start, work and stop.<br \>
+   Logger - this module is responsible for logging on this moment on stdout. <br \>
+   ConfigMenager - responsible for parse and validate config from Config.json <br \>
+   ListenerMenager - responsible for create and menage listeners <br \>
+   DriverMenager - responsible for create and menage sensors <br \>
+   Sensor - responsible for symulate data and push this data on messageQueue[sensorID] <br \>
+   Listener - responsible for take data from messageQueue, corectly wrapp this data and log. <br \>
+   MessageQueue - have only queue inside the class, nothing special <br \>
+    <br \>
 
 <p align="center">
    <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/StartProgram.PNG" width="50%" height="50%" /><br \>
 </p>
+Any state like init, start, work and stop is propagate by LifeCycle. Any change of state is look are the same. On this example is START state.<br \>
+- Life Cycle send to Listener Menager, DriverMenager, ConfigMenager to START <br \>
+- ListenerMenager create listeners with they own thread <br \>
+- DriverMenager create sensors with they own thread <br \>
+<br \>
 
 <p align="center">
    <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/GetConfig.png" width="50%" height="50%" /><br \>
 </p>
+ <br \>
+ - ConfigMenager get config.json and properly parsed and validate  <br \>
+ - To properly set Listeners ListenerMenager get from ConfigMenager needed config component.  <br \>
+ - To properly set Sensors DriverMenager get from ConfigMenager needed config component.  <br \>
+ <br \>
 
 <p align="center">
    <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/FlowMessage.PNG" width="50%" height="50%" /><br \>
 </p>
+<br \>
+RED:<br \>
+- Sensor in his own thread push data on queue[SensorID]. Sensor push the data by DriverMenager.<br \>
+- Listener in his own thread pop data from queue[SensorID]. Listener pop the data by ListenerMenager.<br \>
+- Listener properly wrapp data.<br \>
+GREEN:<br \>
+- Wrapp data is logger on stdout by Logger which is component of ListenerMenager.<br \>
+<br \>
 
 <a name="fea">.</a>
 ## Feature

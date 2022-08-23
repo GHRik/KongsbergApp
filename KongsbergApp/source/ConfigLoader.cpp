@@ -88,10 +88,17 @@ utils::ErrorCode common::ConfigLoader::run()
 		{
 			continue;
 		}
+
 		sensorContent_tmp << it.value()[utils::JSON_ID] << ' ' << it.value()[utils::JSON_NAME]
 			<< ' ' << it.value()[utils::JSON_MAX] << ' ' << it.value()[utils::JSON_MIN]
 			<< ' ' << it.value()[utils::JSON_ALIVE] << ' ' << it.value()[utils::JSON_FREQ];
 		sensorContent_tmp >> id >> name >> maxVal >> minVal >> alive >> freq;
+
+		if (std::stoi(maxVal) < std::stoi(minVal))
+		{
+			logger->logError("JSON ERROR: ", maxVal + " < " + minVal);
+			return utils::ErrorCode::NOK;
+		}
 
 		configElem.insert(configElem.begin() + utils::ID_PLACE, id);
 		configElem.insert(configElem.begin() + utils::NAME_PLACE, name);
@@ -172,7 +179,7 @@ utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
 	{
 	case utils::Status::INIT:
 		this->status = utils::Status::INIT;
-		this->run();
+		return this->run();
 		break;
 	case utils::Status::START:
 		this->status = utils::Status::START;

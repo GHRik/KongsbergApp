@@ -21,7 +21,7 @@ int main()
     common::ListenerMenager listenerMenager(&logger, &lifeCycle, &configLoader, &messageQueue); 
     
     int a = -1;
-    logger.logInfo("Hint: ", "To run program press 0, to stop press 1");
+    logger.logInfo("Hint: ", "To run program press 0. After run to stop press 1. If you want to exit press 2");
     while (std::cin >> a)
     {
         if (a==0)
@@ -30,22 +30,28 @@ int main()
             {
                 while (std::cin >> a)
                 {
-                    if (a == 1)
+                    if (a == 1 || a == 2)
                     {
-                        logger.logInfo("INFO: ", "Program is stopped to re run press 0");
+                        logger.logInfo("INFO: ", "Program is stopped to re run press 0, to stop press 2");
                         break;
                     }
                 }
             }
+            else
+            {
+                logger.logInfo("Hint: ", "Program is stopped cause of an error. To run program press 0, to stop press 2,");
+            }
             lifeCycle.stop();
+            logger.logInfo("INFO: ", "Program is stopped to re run press 0. To exit press 2");
+            if (a == 2)
+            {
+                break;
+            }
+        }
+        if (a == 2)
+        {
+            break;
         }
     }
-
-
-
-    lifeCycle.stop();
-
-
-
 }
 

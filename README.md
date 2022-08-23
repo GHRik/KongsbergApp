@@ -31,7 +31,7 @@ An attempt has been made to support any bad json format. If any case this progra
 - Value MaxValue (integer, maximum value which can sensor create)
 - Value: Alive (boolean, is sensor is turn off or turn on)
 - Value: FrequencyHZ(unsigned integer, how fast you can take a data from sensor in Hz)
-Example json config you can find in this repo SensorConfig.json
+Example json config you can find in this repo [SensorConfig.json](https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/SensorConfig.json)
 
 <a name="archi">.</a>
 ## Architecture
@@ -58,7 +58,7 @@ Example json config you can find in this repo SensorConfig.json
 - Use json config
 - Change json config during program run
 - Validate json(key and values)
-- Easy to change name of key and value in json(check utils/config.hpp)
+- Easy to change name of key and value in json(check [utils/config.hpp](https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/utils/config.hpp))
 
 <a name="Todo">.</a>
 ## ToDos

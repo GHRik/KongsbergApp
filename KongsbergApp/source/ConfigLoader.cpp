@@ -79,9 +79,25 @@ utils::ErrorCode common::ConfigLoader::run()
 	data = nlohmann::json::parse(sensorContent);
 	std::vector<std::string> configElem(utils::NUMBER_OF_CONFIG_ELEM);
 	
+	uint8_t counter = 0;
 	for (auto it = data.begin(); it != data.end(); ++it)
 	{
+		counter++;
 		std::string id, name, maxVal, minVal, alive, freq ;
+
+		if (data.contains("ID") == true)
+		{
+			logger->logInfo("XD", "XD");
+		}
+
+		if (!it.value().contains(utils::JSON_ID) || !it.value().contains(utils::JSON_NAME) ||
+			!it.value().contains(utils::JSON_MAX) || !it.value().contains(utils::JSON_MIN) ||
+			!it.value().contains(utils::JSON_ALIVE) || !it.value().contains(utils::JSON_FREQ) )
+		{
+			std::string result = "Unable to find one of necessary field, on position "+ std::to_string(counter);
+			logger->logError("ERROR JSON: ", result);
+			return utils::ErrorCode::NOK;
+		}
 
 		sensorContent_tmp.clear();
 		if (it.value()[utils::JSON_ALIVE] == false || it.value()[utils::JSON_ALIVE] == 0)

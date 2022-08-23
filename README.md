@@ -94,7 +94,7 @@ GREEN:<br \>
 - ErrorCode should be validate in all necessary function. On this moment some of functions who are return ErrorCode only return OK.
 - All necessary pointers should be change on smart pointers.
 - Function run() in ConfigLoader is so big. Should be split by functions.
-- Create unit tests. Unit tests class should in first time 
+- Create unit tests. Classes with function and parametrs should be mock.
 - Delete unecessary pointer, value, log, etc.
 - Add logging in any part. At first debugg logs.
 

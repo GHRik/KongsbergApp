@@ -54,7 +54,7 @@ Example json config you can find in this repo SensorConfig.json
 
 <a name="fea">.</a>
 ## Feature
-- Use [https://github.com/nlohmann/json](json library)
+- Use [json library](https://github.com/nlohmann/json)
 - Use json config
 - Change json config during program run
 - Validate json(key and values)

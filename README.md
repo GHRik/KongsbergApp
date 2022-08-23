@@ -36,9 +36,25 @@ Example json config you can find in this repo SensorConfig.json
 <a name="archi">.</a>
 ## Architecture
 
+<p align="center">
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/ArchitecturePreview.png" width="50%" height="50%" /><br \>
+</p>
+
+<p align="center">
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/StartProgram.PNG" width="50%" height="50%" /><br \>
+</p>
+
+<p align="center">
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/GetConfig.png" width="50%" height="50%" /><br \>
+</p>
+
+<p align="center">
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/FlowMessage.PNG" width="50%" height="50%" /><br \>
+</p>
+
 <a name="fea">.</a>
 ## Feature
-- Use (https://github.com/nlohmann/json)[json library] 
+- Use [https://github.com/nlohmann/json](json library)
 - Use json config
 - Change json config during program run
 - Validate json(key and values)
@@ -50,10 +66,10 @@ Example json config you can find in this repo SensorConfig.json
 - ErrorCode should be validate in all necessary function. On this moment some of functions who are return ErrorCode only return OK.
 - All necessary pointers should be change on smart pointers.
 - Function run() in ConfigLoader is so big. Should be split by functions.
-- Create unit tests. Unit tests should in first time 
+- Create unit tests. Unit tests class should in first time 
 - Delete unecessary pointer, value, log, etc.
 - Add logging in any part. At first debugg logs.
 
 <a name="res">.</a>
-#Result
+## Result
 

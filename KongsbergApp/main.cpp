@@ -30,7 +30,6 @@ int main()
                 {
                     if (a == 1 || a == 2)
                     {
-                        logger.logInfo("Hint: ", "Program is stopped to re run press 0, to stop press 2");
                         break;
                     }
                 }
@@ -41,7 +40,8 @@ int main()
             }
             lifeCycle.stop();
             messageQueue.stop();
-            logger.logInfo("Hint: ", "Program is stopped to re run press 0. To exit press 2");
+            if(a == 1)
+                logger.logInfo("Hint: ", "Program is stopped to re run press 0. To exit press 2");
             if (a == 2)
             {
                 break;

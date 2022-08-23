@@ -63,6 +63,15 @@ utils::ErrorCode common::ConfigLoader::run()
 
 	for (auto it = data.begin(); it != data.end(); ++it)
 	{
+		if (!data.contains(utils::JSON_HEADER))
+		{
+			logger->logError("ERROR JSON: ", "key: \"" + utils::JSON_HEADER + "\" could not be find");
+			return utils::ErrorCode::NOK;
+		}
+	}
+
+	for (auto it = data.begin(); it != data.end(); ++it)
+	{
 		if (it.key() == utils::JSON_HEADER)
 		{
 			sensorContent_tmp << it.value();

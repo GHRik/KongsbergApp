@@ -12,6 +12,13 @@ common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLif
 
 common::SensorMenager::~SensorMenager()
 {
+	for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+	{
+		if (sensorsWantToBeAlive.at(i) != nullptr)
+		{
+			delete sensorsWantToBeAlive.at(i);
+		}
+	}
 
 }
 
@@ -58,8 +65,12 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 		}
 		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
 		{
-			delete sensorsWantToBeAlive.at(i);
+			if (sensorsWantToBeAlive.at(i) != nullptr)
+			{
+				delete sensorsWantToBeAlive.at(i);
+			}
 		}
+		sensorsWantToBeAlive.clear();
 		break;
 
 	}

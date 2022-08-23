@@ -10,6 +10,11 @@ common::ListenerMenager::ListenerMenager(interface::iLogger* logger, interface::
 }
 common::ListenerMenager::~ListenerMenager()
 {
+	for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
+	{
+		if(listenerWantToBeAlive.at(i) != nullptr)
+			delete listenerWantToBeAlive.at(i);
+	}
 
 }
 
@@ -59,8 +64,10 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 		}
 		for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
 		{
-			delete listenerWantToBeAlive.at(i);
+			if (listenerWantToBeAlive.at(i) != nullptr)
+				delete listenerWantToBeAlive.at(i);
 		}
+		listenerWantToBeAlive.clear();
 		break;
 
 	}

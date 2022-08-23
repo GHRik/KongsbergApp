@@ -84,6 +84,10 @@ utils::ErrorCode common::ConfigLoader::run()
 		std::string id, name, maxVal, minVal, alive, freq ;
 
 		sensorContent_tmp.clear();
+		if (it.value()[utils::JSON_ALIVE] == false || it.value()[utils::JSON_ALIVE] == 0)
+		{
+			continue;
+		}
 		sensorContent_tmp << it.value()[utils::JSON_ID] << ' ' << it.value()[utils::JSON_NAME]
 			<< ' ' << it.value()[utils::JSON_MAX] << ' ' << it.value()[utils::JSON_MIN]
 			<< ' ' << it.value()[utils::JSON_ALIVE] << ' ' << it.value()[utils::JSON_FREQ];

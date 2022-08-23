@@ -28,4 +28,6 @@ namespace utils
 	const float alarmPercent = 0.1;
 	const float warnPercent = 0.15;
 
+	const uint16_t logSleepMilisec = 1000;
+
 }

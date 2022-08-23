@@ -19,17 +19,55 @@ listenerLayer::Listener::~Listener()
 
 utils::ErrorCode listenerLayer::Listener::run()
 {
-	std::chrono::milliseconds timespan(10);
+	std::chrono::milliseconds timespan(100);
 	this->status = utils::Status::WORK;
 	while (this->status == utils::Status::WORK)
 	{
-		std::cout << this->ListenerMenager->popNotPreparedMessage(this->id);
+		wrappAndLog(this->ListenerMenager->popNotPreparedMessage(this->id));
 		std::this_thread::sleep_for(timespan);
 	}
 	return utils::ErrorCode::OK;
 }
 
-//void wrappAndLog
+void listenerLayer::Listener::wrappAndLog(int message)
+{
+	std::string prepareMessage = utils::PREFIX_MESSAGE;
+	prepareMessage += ", " + std::to_string(this->id) + " ," + this->name + ", " + std::to_string(message) + ", ";
+
+	std::string quality;
+
+	float alarmPercent = utils::alarmPercent;
+	float alarmMinValueStart = this->minValue;
+	float alarmMinValueStop = alarmMinValueStart + this->maxValue * alarmPercent;
+	float alarmMaxValueStop = this->maxValue;
+	float alarmMaxValueStart = alarmMaxValueStop - (this->maxValue * alarmPercent);
+
+	float warnPercent = utils::warnPercent;
+	float warnMinValueStart = alarmMinValueStop;
+	float warnMinValueStop = warnMinValueStart + (this->maxValue * warnPercent);
+	float warnMaxValueStop = alarmMaxValueStart;
+	float warnMaxValueStart = warnMaxValueStop - (this->maxValue * warnPercent);
+
+	float normalPercent = 100-(alarmPercent * 2 + warnPercent * 2);
+	float normalMinValue = this->minValue + (this->minValue * normalPercent);
+	float normalMaxValue = this->maxValue + (this->maxValue * normalPercent);
+
+	if ( (message <= alarmMinValueStop) || (message >= alarmMaxValueStart) )
+	{
+		quality = "ALARM*";
+		
+	}
+	else if ( message > alarmMinValueStop && message <= warnMinValueStop || message > warnMaxValueStart && message < warnMaxValueStop)
+	{
+		quality = "WARN*";
+	}
+	else
+	{
+		quality = "Normal*";
+	}
+	this->ListenerMenager->logOutput(prepareMessage+quality+"\n");
+
+}
 
 utils::ErrorCode listenerLayer::Listener::setStatus(utils::Status status)
 {

@@ -2,7 +2,6 @@
 
 #include <string>
 #include "../utils/ErrorCode.hpp"
-#include "iLogger.hpp"
 
 namespace interface
 {
@@ -15,7 +14,6 @@ namespace interface
 		virtual int popNotPreparedMessage(uint8_t id) = 0;
 		virtual utils::ErrorCode pushPreparedMessage(uint8_t id, int message) = 0;
 		virtual utils::ErrorCode runListener() = 0;
-
-		iLogger* logger;
+		virtual utils::ErrorCode logOutput(std::string output) = 0;
 	};
 }

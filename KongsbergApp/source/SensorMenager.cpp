@@ -34,7 +34,9 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 		{
 			int id = configLoader->getAliveSensorsID().at(i);
 			int freq = configLoader->getAliveSensorsFreq().at(i);
-			sensorLayer::Sensor* sensor = new sensorLayer::Sensor(this, id, freq);
+			int minRange = configLoader->getAliveSensorsMin().at(i);
+			int maxRange = configLoader->getAliveSensorsMax().at(i);
+			sensorLayer::Sensor* sensor = new sensorLayer::Sensor(this, id, freq, minRange, maxRange);
 		}
 		break;
 	case utils::Status::START:

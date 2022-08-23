@@ -2,10 +2,10 @@
 
 #include "../interfaces/iListenerService.hpp"
 #include "../interfaces/iListenerMenager.hpp"
+#include "../utils/config.hpp"
 #include <thread>
 #include <chrono>
 #include <iostream>
-#include <memory>
 
 namespace listenerLayer
 {
@@ -27,5 +27,7 @@ namespace listenerLayer
 		bool semaphore;
 
 		std::thread thread;
+
+		void wrappAndLog(int message);
 	};
 }

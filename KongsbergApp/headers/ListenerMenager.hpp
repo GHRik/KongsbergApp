@@ -23,6 +23,7 @@ namespace common
 		int popNotPreparedMessage(uint8_t id);
 		utils::ErrorCode pushPreparedMessage(uint8_t id, int message);
 		utils::ErrorCode runListener();
+		utils::ErrorCode logOutput(std::string output);
 
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;

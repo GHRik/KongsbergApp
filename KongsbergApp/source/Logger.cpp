@@ -22,7 +22,7 @@ utils::ErrorCode common::Logger::logWarn(std::string tag, std::string message)
 }
 utils::ErrorCode common::Logger::logInfo(std::string tag, std::string message)
 {
-	std::cout << "INFO: " << this->logError(tag, message);
+	std::cout << "INFO: " << this->logEvent(tag, message);
 	return utils::ErrorCode::OK;
 }
 

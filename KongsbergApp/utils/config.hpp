@@ -23,4 +23,9 @@ namespace utils
 	const std::uint8_t ALIVE_PLACE = 4;
 	const std::uint8_t FREQ_PLACE = 5;
 
+	const std::string PREFIX_MESSAGE = "$FIX";
+
+	const float alarmPercent = 0.1;
+	const float warnPercent = 0.15;
+
 }

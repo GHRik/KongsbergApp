@@ -92,3 +92,8 @@ utils::ErrorCode common::ListenerMenager::runListener()
 	}
 	return utils::ErrorCode::OK;
 }
+
+utils::ErrorCode common::ListenerMenager::logOutput(std::string output)
+{
+	return this->logger->logInfo("Sensor output: ", output);
+}

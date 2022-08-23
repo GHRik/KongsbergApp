@@ -13,7 +13,7 @@
       "Type": "position",
       "MinValue": 0,
       "MaxValue": 100,
-      "Alive": true,
+      "Alive": false,
       "FrequencyHz": 1
     },
     {
@@ -22,7 +22,7 @@
       "MinValue": 0,
       "MaxValue": 100,
       "Alive": true,
-      "FrequencyHz": 10
+      "FrequencyHz": 4
     },
     {
       "ID": 4,
@@ -30,7 +30,7 @@
       "MinValue": 0,
       "MaxValue": 100,
       "Alive": true,
-      "FrequencyHz": 10
+      "FrequencyHz": 1
     }
   ]
 }

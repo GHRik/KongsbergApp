@@ -38,7 +38,7 @@ Example json config you can find in this repo [SensorConfig.json](https://github
 
 <p align="center">
    Architecture Perview<br \>
-   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/ArchitecturePreview.png" width="50%" height="50%" /><br \><br \>
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/ArchitecturePreview.png"/><br \><br \>
 </p>
    LifeCycle - module responsible for set other module to init, start, work and stop.<br \>
    Logger - this module is responsible for logging on this moment on stdout. <br \>
@@ -51,7 +51,7 @@ Example json config you can find in this repo [SensorConfig.json](https://github
     <br \>
 
 <p align="center">
-   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/StartProgram.PNG" width="50%" height="50%" /><br \>
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/StartProgram.PNG" /><br \>
 </p>
 Any state like init, start, work and stop is propagate by LifeCycle. Any change of state is look are the same. On this example is START state.<br \>
 - Life Cycle send to Listener Menager, DriverMenager, ConfigMenager to START <br \>
@@ -60,7 +60,7 @@ Any state like init, start, work and stop is propagate by LifeCycle. Any change 
 <br \>
 
 <p align="center">
-   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/GetConfig.png" width="50%" height="50%" /><br \>
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/GetConfig.png"/><br \>
 </p>
  <br \>
  - ConfigMenager get config.json and properly parsed and validate  <br \>
@@ -69,7 +69,7 @@ Any state like init, start, work and stop is propagate by LifeCycle. Any change 
  <br \>
 
 <p align="center">
-   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/FlowMessage.PNG" width="50%" height="50%" /><br \>
+   <img src="https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/images/FlowMessage.PNG" /><br \>
 </p>
 <br \>
 RED:<br \>

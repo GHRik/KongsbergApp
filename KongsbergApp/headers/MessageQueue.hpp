@@ -17,6 +17,8 @@ namespace common
 		utils::ErrorCode pushQueue(uint8_t id, int message);
 		int popQueue(uint8_t id);
 
+		void stop();
+
 		
 	};
 }

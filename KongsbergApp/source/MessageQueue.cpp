@@ -37,3 +37,11 @@ utils::ErrorCode common::MessageQueue::pushQueue(uint8_t id, int message)
 	return utils::ErrorCode();
 }
 
+void common::MessageQueue::stop()
+{
+	for (int i = 0; i < 256; i++)
+	{
+		queue.at(i).clear();
+	}
+}
+

@@ -220,6 +220,12 @@ utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
 		break;
 	case utils::Status::STOP:
 		this->status = utils::Status::STOP;
+		this->aliveSensorsAmount = 0;
+		this->aliveSensorsID.clear();
+		this->aliveSensorsMin.clear();
+		this->aliveSensorsMax.clear();
+		this->aliveSensorsFreq.clear();
+		this->aliveSensorsName.clear();
 		break;
 
 	}

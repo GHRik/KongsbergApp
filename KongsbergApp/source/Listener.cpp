@@ -19,7 +19,7 @@ listenerLayer::Listener::~Listener()
 
 utils::ErrorCode listenerLayer::Listener::run()
 {
-	std::chrono::milliseconds timespan(100);
+	std::chrono::milliseconds timespan(utils::logSleepMilisec);
 	this->status = utils::Status::WORK;
 	while (this->status == utils::Status::WORK)
 	{

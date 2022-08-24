@@ -15,11 +15,12 @@ namespace utils
 	{
 		switch (v)
 		{
-		case CREATE: return "CREATE";
-		case INIT:   return "INIT";
-		case START:   return "START";
-		case WORK: return "WORK";
-		case STOP:      return "STOP";
+		case CREATE:	return "CREATE";
+		case INIT:		return "INIT";
+		case START:		return "START";
+		case WORK:		return "WORK";
+		case STOP:		return "STOP";
+		default:		return "";
 		}
 	}
 }

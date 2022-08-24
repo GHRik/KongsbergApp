@@ -8,7 +8,10 @@ namespace interface
 	class iListenerService
 	{
 	public:
-		iListenerService(){};
+		iListenerService()
+		{
+			status = utils::Status::CREATE;
+		};
 		virtual ~iListenerService(){};
 		virtual utils::ErrorCode setStatus(utils::Status status) = 0;
 		virtual utils::Status getStatus()

@@ -1,7 +1,7 @@
 #include "../headers/Listener.hpp"
 
 
-listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, int id , std::string name, int maxValue, int minValue, int frequency)
+listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, int id , const std::string &name, int maxValue, int minValue, int frequency)
 	: ListenerMenager(listenerMenager), id(id), name(name), maxValue(maxValue), minValue(minValue), frequency(frequency)
 {
 	listenerMenager->registerListener(this);
@@ -26,21 +26,17 @@ void listenerLayer::Listener::wrappAndLog(int message)
 
 	std::string quality;
 
-	float alarmPercent = utils::alarmPercent;
-	float alarmMinValueStart = this->minValue;
-	float alarmMinValueStop = alarmMinValueStart + this->maxValue * alarmPercent;
-	float alarmMaxValueStop = this->maxValue;
-	float alarmMaxValueStart = alarmMaxValueStop - (this->maxValue * alarmPercent);
+	double alarmPercent = utils::alarmPercent;
+	double alarmMinValueStart = this->minValue;
+	double alarmMinValueStop = alarmMinValueStart + this->maxValue * alarmPercent;
+	double alarmMaxValueStop = this->maxValue;
+	double alarmMaxValueStart = alarmMaxValueStop - (this->maxValue * alarmPercent);
 
-	float warnPercent = utils::warnPercent;
-	float warnMinValueStart = alarmMinValueStop;
-	float warnMinValueStop = warnMinValueStart + (this->maxValue * warnPercent);
-	float warnMaxValueStop = alarmMaxValueStart;
-	float warnMaxValueStart = warnMaxValueStop - (this->maxValue * warnPercent);
-
-	float normalPercent = 100-(alarmPercent * 2 + warnPercent * 2);
-	float normalMinValue = this->minValue + (this->minValue * normalPercent);
-	float normalMaxValue = this->maxValue + (this->maxValue * normalPercent);
+	double warnPercent = utils::warnPercent;
+	double warnMinValueStart = alarmMinValueStop;
+	double warnMinValueStop = warnMinValueStart + (this->maxValue * warnPercent);
+	double warnMaxValueStop = alarmMaxValueStart;
+	double warnMaxValueStart = warnMaxValueStop - (this->maxValue * warnPercent);
 
 	if ( (message <= alarmMinValueStop) || (message >= alarmMaxValueStart) )
 	{

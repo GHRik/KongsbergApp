@@ -11,19 +11,19 @@ namespace listenerLayer
 	class Listener : public interface::iListenerService
 	{
 	public:
-		explicit Listener() = default;
-		Listener(interface::iListenerMenager* listenerMenager, int id, std::string name, int maxValue, int minValue, int frequency);
+		Listener() = delete;
+		Listener(interface::iListenerMenager* listenerMenager, int id, const std::string &name, int maxValue, int minValue, int frequency);
 		virtual  ~Listener() = default;
-		utils::ErrorCode run();
-		utils::ErrorCode setStatus(utils::Status status);
+		utils::ErrorCode run() override;
+		utils::ErrorCode setStatus(utils::Status status) override;
 	private:
 		interface::iListenerMenager* ListenerMenager;
 
-		std::string name;
-		int maxValue;
-		int minValue;
-		int frequency;
-		int id;
+		const std::string name;
+		const int maxValue;
+		const int minValue;
+		const int frequency;
+		const int id;
 
 		std::thread thread;
 

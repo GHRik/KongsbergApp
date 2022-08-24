@@ -12,11 +12,11 @@ namespace common
         public interface::iLifeCycleMenager
     {
     public:
-        explicit LifeCycle() = default;
-        LifeCycle(interface::iLogger* logger);
+        LifeCycle() = delete;
+        explicit LifeCycle(interface::iLogger* logger);
         virtual ~LifeCycle() = default;
-        utils::ErrorCode run();
-        utils::ErrorCode stop();
+        utils::ErrorCode run() override;
+        utils::ErrorCode stop() override;
         utils::ErrorCode registry(interface::iLifeCycleService* service);
 
     private:

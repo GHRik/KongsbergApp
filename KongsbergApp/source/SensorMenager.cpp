@@ -32,7 +32,7 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 			int freq = configLoader->getAliveSensorsFreq().at(i);
 			int minRange = configLoader->getAliveSensorsMin().at(i);
 			int maxRange = configLoader->getAliveSensorsMax().at(i);
-			sensorLayer::Sensor* sensor = new sensorLayer::Sensor(this, id, freq, minRange, maxRange);
+			new sensorLayer::Sensor(this, id, freq, minRange, maxRange);
 		}
 		break;
 	case utils::Status::START:
@@ -69,15 +69,6 @@ utils::ErrorCode common::SensorMenager::registerSensor(interface::iSensorService
 utils::ErrorCode common::SensorMenager::pushNotPreparedMessage(uint8_t id, int message)
 {
 	return messageQueue->pushQueue(id, message);
-}
-
-utils::ErrorCode common::SensorMenager::runSensor()
-{
-	for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
-	{
-		sensorsWantToBeAlive.at(i)->setStatus(utils::Status::INIT);
-	}
-	return utils::ErrorCode::OK;
 }
 
 void common::SensorMenager::deleteSensors()

@@ -12,11 +12,10 @@ namespace common
 	public:
 		explicit Logger() = default;
 		virtual ~Logger() = default;
-		utils::ErrorCode logError(std::string tag, std::string message);
-		utils::ErrorCode logWarn(std::string tag, std::string message);
-		utils::ErrorCode logInfo(std::string tag, std::string message);
+		utils::ErrorCode logError(const std::string &tag, const std::string &message) override;
+		utils::ErrorCode logInfo(const std::string &tag, const std::string &message) override;
 	private:
-		std::string logEvent(std::string &tag, std::string &message) const;
+		std::string logEvent(const std::string &tag, const std::string &message) const;
 
 	};
 }

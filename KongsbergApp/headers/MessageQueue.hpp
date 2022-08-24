@@ -14,8 +14,8 @@ namespace common
 		explicit MessageQueue();
 		virtual ~MessageQueue() = default;
 
-		utils::ErrorCode pushQueue(uint8_t id, int message);
-		int popQueue(uint8_t id);
+		utils::ErrorCode pushQueue(uint8_t id, int message) override;
+		int popQueue(uint8_t id) override;
 
 		void stop();
 

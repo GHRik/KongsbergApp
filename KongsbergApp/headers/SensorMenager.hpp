@@ -13,16 +13,16 @@ namespace common
 	class SensorMenager : public interface::iSensorMenager, public interface::iLifeCycleService
 	{
 	public:
-		explicit SensorMenager() = default;
+		SensorMenager() = delete;
 		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);
 		virtual ~SensorMenager();
 
-		utils::ErrorCode run();
-		utils::ErrorCode setStatus(utils::Status status);
+		utils::ErrorCode run() override;
+		utils::ErrorCode setStatus(utils::Status status) override;
 
-		utils::ErrorCode registerSensor(interface::iSensorService* sensorService);
-		utils::ErrorCode pushNotPreparedMessage(uint8_t id, int message);
-		utils::ErrorCode runSensor();
+		utils::ErrorCode registerSensor(interface::iSensorService* sensorService) override;
+		utils::ErrorCode pushNotPreparedMessage(uint8_t id, int message) override;
+
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;

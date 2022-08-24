@@ -7,7 +7,7 @@ common::ListenerMenager::ListenerMenager(interface::iLogger* logger, interface::
 }
 common::ListenerMenager::~ListenerMenager()
 {
-	deleteListeners();
+	//deleteListeners();
 }
 
 utils::ErrorCode common::ListenerMenager::run()
@@ -32,7 +32,7 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 			int min = configLoader->getAliveSensorsMin().at(i);
 			int max = configLoader->getAliveSensorsMax().at(i);
 			int freq = configLoader->getAliveSensorsFreq().at(i);
-			listenerLayer::Listener* listener = new listenerLayer::Listener(this, id, name, max, min, freq);
+			new listenerLayer::Listener(this, id, name, max, min, freq);
 		}
 		runListener();
 		break;
@@ -74,11 +74,6 @@ int common::ListenerMenager::popNotPreparedMessage(uint8_t id)
 	return messageQueue->popQueue(id);
 }
 
-utils::ErrorCode common::ListenerMenager::pushPreparedMessage(uint8_t id, int message)
-{
-	return messageQueue->pushQueue(id, message);
-}
-
 utils::ErrorCode common::ListenerMenager::runListener()
 {
 	for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
@@ -88,7 +83,7 @@ utils::ErrorCode common::ListenerMenager::runListener()
 	return utils::ErrorCode::OK;
 }
 
-utils::ErrorCode common::ListenerMenager::logOutput(std::string output)
+utils::ErrorCode common::ListenerMenager::logOutput(const std::string &output)
 {
 	return this->logger->logInfo("Sensor output: ", output);
 }

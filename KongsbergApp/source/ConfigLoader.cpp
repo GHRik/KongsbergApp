@@ -75,8 +75,6 @@ utils::ErrorCode common::ConfigLoader::run()
 	std::string sensorContent;
 	sensorContent_tmp >> sensorContent;
 
-
-	int counterAlive = 0;
 	std::vector<std::vector<std::string>> sensorInfo;
 
 	data = nlohmann::json::parse(sensorContent);

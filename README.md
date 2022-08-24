@@ -87,15 +87,16 @@ GREEN:<br \>
 - Change json config during program run
 - Validate json(key and values)
 - Easy to change name of key and value in json(check [utils/config.hpp](https://github.com/GHRik/KongsbergApp/blob/master/KongsbergApp/utils/config.hpp))
+- [Ringbuffer](https://www.boost.org/doc/libs/1_61_0/doc/html/circular_buffer.html) to save space.
 
 <a name="Todo">.</a>
 ## ToDos
-- Sometimes program stop. It can be a problem with vector. In my opinion in task like that should be avoid to use vectors. Circular buffer should be use.
+- DONE: Sometimes program stop. It can be a problem with vector. In my opinion in task like that should be avoid to use vectors. Circular buffer should be use.
 - ErrorCode should be validate in all necessary function. On this moment some of functions who are return ErrorCode only return OK.
 - All necessary pointers should be change on smart pointers.
-- Function run() in ConfigLoader is so big. Should be split by functions.
+- DONE: Function run() in ConfigLoader is so big. Should be split by functions.
 - Create unit tests. Classes with function and parametrs should be mock.
-- Delete unecessary pointer, value, log, etc.
+- DONE: Delete unecessary pointer, value, log, etc.
 - Add logging in any part. At first debugg logs.
 
 <a name="res">.</a>

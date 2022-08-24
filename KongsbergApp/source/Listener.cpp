@@ -2,13 +2,8 @@
 
 
 listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, int id , std::string name, int maxValue, int minValue, int frequency)
+	: ListenerMenager(listenerMenager), id(id), name(name), maxValue(maxValue), minValue(minValue), frequency(frequency)
 {
-	this->ListenerMenager = listenerMenager;
-	this->id = id;
-	this->name = name;
-	this->maxValue = maxValue;
-	this->minValue = minValue;
-	this->frequency = frequency;
 	listenerMenager->registerListener(this);
 }
 

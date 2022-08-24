@@ -8,7 +8,10 @@ namespace interface
 	class iLifeCycleService
 	{
 	public:
-		iLifeCycleService(){};
+		iLifeCycleService()
+		{
+			status = utils::Status::CREATE;
+		};
 		virtual ~iLifeCycleService(){};
 		virtual utils::ErrorCode setStatus(utils::Status status) = 0;
 		virtual utils::Status getStatus()

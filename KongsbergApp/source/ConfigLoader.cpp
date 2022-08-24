@@ -1,43 +1,42 @@
 #include "../headers/ConfigLoader.hpp"
 
 common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager)
+	: logger(logger), lifeCycleMenager(lifeCycleMenager), aliveSensorsAmount(0)
 {
-	this->logger = logger;
-	this->lifeCycleMenager = lifeCycleMenager;
 	this->lifeCycleMenager->registry(this);
-	this->setStatus(utils::Status::INIT);
+	status = utils::Status::CREATE;
 }
 
 common::ConfigLoader::~ConfigLoader()
 {
 }
 
-uint8_t common::ConfigLoader::getNumberAliveSensors()
+const uint8_t common::ConfigLoader::getNumberAliveSensors() const
 {
 	return aliveSensorsAmount;
 }
 
-std::vector<int> common::ConfigLoader::getAliveSensorsID()
+const std::vector<int> common::ConfigLoader::getAliveSensorsID() const
 {
 	return aliveSensorsID;
 }
 
-std::vector<int> common::ConfigLoader::getAliveSensorsMin()
+const std::vector<int> common::ConfigLoader::getAliveSensorsMin() const
 {
 	return aliveSensorsMin;
 }
 
-std::vector<int> common::ConfigLoader::getAliveSensorsMax()
+const std::vector<int> common::ConfigLoader::getAliveSensorsMax() const
 {
 	return aliveSensorsMax;
 }
 
-std::vector<int> common::ConfigLoader::getAliveSensorsFreq()
+const std::vector<int> common::ConfigLoader::getAliveSensorsFreq() const
 {
 	return aliveSensorsFreq;
 }
 
-std::vector<std::string> common::ConfigLoader::getAliveSensorsName()
+const std::vector<std::string> common::ConfigLoader::getAliveSensorsName() const
 {
 	return aliveSensorsName;
 }
@@ -92,7 +91,6 @@ utils::ErrorCode common::ConfigLoader::run()
 	for (auto it = data.begin(); it != data.end(); ++it)
 	{
 		counter++;
-		std::string id, name, maxVal, minVal, alive, freq;
 
 		if (!it.value().contains(utils::JSON_ID) || !it.value().contains(utils::JSON_NAME) ||
 			!it.value().contains(utils::JSON_MAX) || !it.value().contains(utils::JSON_MIN) ||
@@ -112,6 +110,7 @@ utils::ErrorCode common::ConfigLoader::run()
 		sensorContent_tmp << it.value()[utils::JSON_ID] << ' ' << it.value()[utils::JSON_NAME]
 			<< ' ' << it.value()[utils::JSON_MAX] << ' ' << it.value()[utils::JSON_MIN]
 			<< ' ' << it.value()[utils::JSON_ALIVE] << ' ' << it.value()[utils::JSON_FREQ];
+		std::string id, name, maxVal, minVal, alive, freq;
 		sensorContent_tmp >> id >> name >> maxVal >> minVal >> alive >> freq;
 
 		if (std::stoi(maxVal) < std::stoi(minVal))
@@ -136,61 +135,81 @@ utils::ErrorCode common::ConfigLoader::run()
 	}
 		
 	translateConfig(sensorInfo);
-	aliveSensorsAmount = sensorInfo.size();
+	aliveSensorsAmount = static_cast<uint8_t>(sensorInfo.size());
 
 	return utils::ErrorCode::OK;
 }
 
-bool common::ConfigLoader::isConfigValid(std::vector<std::vector<std::string>> configToValid)
+bool common::ConfigLoader::isConfigValid(const std::vector<std::vector<std::string>> &configToValid) const
 {
-	for (int i = 0; i < configToValid.size(); ++i)
+		
+	if (isIDFromUint8(configToValid) == false || isIDUnique(configToValid) == false || isNumberInNecesarryField(configToValid) == false)
 	{
-		if (is_number(configToValid.at(i).at(utils::ID_PLACE)) == false)
-		{
-			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " is not number");
-			return false;
-		}
-		if (is_number(configToValid.at(i).at(utils::MIN_PLACE)) == false)
-		{
-			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MIN_PLACE) + " is not number");
-			return false;
-		}
-		if (is_number(configToValid.at(i).at(utils::MAX_PLACE)) == false)
-		{
-			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::MAX_PLACE) + " is not number");
-			return false;
-		}
-		if (is_number(configToValid.at(i).at(utils::FREQ_PLACE)) == false)
-		{
-			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::FREQ_PLACE) + " is not number");
-			return false;
-		}
-	}	
-	for (int i = 0; i < configToValid.size(); ++i)
-	{
-		for (int j = 0; j < configToValid.size(); ++j)
-		{
-			if (configToValid.at(i).at(utils::ID_PLACE) == configToValid.at(j).at(utils::ID_PLACE) && i != j)
-			{
-				logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " ID is duplicated");
-				return false;
-			}
-		}
-	}
-
-	for (int i = 0; i < configToValid.size(); ++i)
-	{
-		if (std::stoi(configToValid.at(i).at(utils::ID_PLACE)) >= 255 || std::stoi(configToValid.at(i).at(utils::ID_PLACE)) < 0)
-		{
-			logger->logError("ERROR JSON: ", configToValid.at(i).at(utils::ID_PLACE) + " ID is >= 255 or < 0");
-			return false;
-		}
+		return false;
 	}
 				
 	return true;
 }
 
-bool common::ConfigLoader::is_number(const std::string& s)
+bool common::ConfigLoader::isIDUnique(const std::vector<std::vector<std::string>> &config) const
+{
+	for (int i = 0; i < config.size(); ++i)
+	{
+		for (int j = 0; j < config.size(); ++j)
+		{
+			if (config.at(i).at(utils::ID_PLACE) == config.at(j).at(utils::ID_PLACE) && i != j)
+			{
+				logger->logError("ERROR JSON: ", config.at(i).at(utils::ID_PLACE) + " ID is duplicated");
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+bool common::ConfigLoader::isIDFromUint8(const std::vector<std::vector<std::string>> &config) const
+{
+	for (int i = 0; i < config.size(); ++i)
+	{
+		if (std::stoi(config.at(i).at(utils::ID_PLACE)) >= 255 || std::stoi(config.at(i).at(utils::ID_PLACE)) < 0)
+		{
+			logger->logError("ERROR JSON: ", config.at(i).at(utils::ID_PLACE) + " ID is >= 255 or < 0");
+			return false;
+		}
+	}
+	return true;
+}
+
+bool common::ConfigLoader::isNumberInNecesarryField(const std::vector<std::vector<std::string>> &config) const
+{
+	for (int i = 0; i < config.size(); ++i)
+	{
+		if (is_number(config.at(i).at(utils::ID_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", config.at(i).at(utils::ID_PLACE) + " is not number");
+			return false;
+		}
+		if (is_number(config.at(i).at(utils::MIN_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", config.at(i).at(utils::MIN_PLACE) + " is not number");
+			return false;
+		}
+		if (is_number(config.at(i).at(utils::MAX_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", config.at(i).at(utils::MAX_PLACE) + " is not number");
+			return false;
+		}
+		if (is_number(config.at(i).at(utils::FREQ_PLACE)) == false)
+		{
+			logger->logError("ERROR JSON: ", config.at(i).at(utils::FREQ_PLACE) + " is not number");
+			return false;
+		}
+	}
+	return true;
+}
+
+
+bool common::ConfigLoader::is_number(const std::string& s) const
 {
 	std::string::const_iterator it = s.begin();
 	if (it == s.begin() && * s.begin() == '-')
@@ -201,7 +220,7 @@ bool common::ConfigLoader::is_number(const std::string& s)
 	return !s.empty() && it == s.end();
 }
 
-void common::ConfigLoader::translateConfig(std::vector<std::vector<std::string>> configToTranslate)
+void common::ConfigLoader::translateConfig(std::vector<std::vector<std::string>> &configToTranslate)
 {
 	for (int i = 0; i < configToTranslate.size(); ++i)
 	{
@@ -220,7 +239,6 @@ utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
 	case utils::Status::INIT:
 		this->status = utils::Status::INIT;
 		return this->run();
-		break;
 	case utils::Status::START:
 		this->status = utils::Status::START;
 		break;
@@ -229,14 +247,19 @@ utils::ErrorCode common::ConfigLoader::setStatus(utils::Status status)
 		break;
 	case utils::Status::STOP:
 		this->status = utils::Status::STOP;
-		this->aliveSensorsAmount = 0;
-		this->aliveSensorsID.clear();
-		this->aliveSensorsMin.clear();
-		this->aliveSensorsMax.clear();
-		this->aliveSensorsFreq.clear();
-		this->aliveSensorsName.clear();
+		clearSensorsResource();
 		break;
 
 	}
 	return utils::ErrorCode::OK;
+}
+
+void common::ConfigLoader::clearSensorsResource()
+{
+	this->aliveSensorsAmount = 0;
+	this->aliveSensorsID.clear();
+	this->aliveSensorsMin.clear();
+	this->aliveSensorsMax.clear();
+	this->aliveSensorsFreq.clear();
+	this->aliveSensorsName.clear();
 }

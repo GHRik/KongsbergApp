@@ -4,9 +4,10 @@
 1. [ Description ](#des)
 2. [ Set config ](#config)
 3. [ Architecture ](#archi)
-4. [ Features ](#fea)
-5. [ To-Dos ](#todo)
-6. [ Results ](#res)
+4. [ Documentation ] (#doc)
+5. [ Features ](#fea)
+6. [ To-Dos ](#todo)
+7. [ Results ](#res)
 
 <a name="des">.</a>
 ## Description
@@ -79,6 +80,11 @@ RED:<br \>
 GREEN:<br \>
 - Wrapp data is logger on stdout by Logger which is component of ListenerMenager.<br \>
 <br \>
+
+<a name="doc">.</a>
+## Documentation
+If would you like to get more knownleadge how any function in work. Check: [documentation files](https://github.com/GHRik/KongsbergApp/tree/master/KongsbergApp/documentation/html). Download and
+open index.html. Enjoy!
 
 <a name="fea">.</a>
 ## Feature

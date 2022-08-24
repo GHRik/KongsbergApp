@@ -5,6 +5,7 @@
 #include "../interfaces/iLogger.hpp"
 #include <vector>
 #include "../interfaces/iConfigMenager.hpp"
+#include "../utils/config.hpp"
 
 namespace common
 {

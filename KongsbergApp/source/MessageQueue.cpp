@@ -3,10 +3,10 @@
 
 common::MessageQueue::MessageQueue()
 {
-	queue.resize(256);
-	for (int i = 0; i < 256; i++)
+	queue.resize(utils::maxAmountOfSensors);
+	for (int i = 0; i < utils::maxAmountOfSensors; i++)
 	{
-		queue.at(i).reserve(10000);
+		queue.at(i).resize(utils::cyclicBufferSize);
 	}
 
 }
@@ -35,7 +35,7 @@ utils::ErrorCode common::MessageQueue::pushQueue(uint8_t id, int message)
 
 void common::MessageQueue::stop()
 {
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < utils::maxAmountOfSensors; i++)
 	{
 		queue.at(i).clear();
 	}

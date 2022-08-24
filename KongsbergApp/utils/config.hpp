@@ -30,4 +30,7 @@ namespace utils
 
 	constexpr uint16_t logSleepMilisec = 1000;
 
+	constexpr uint8_t maxAmountOfSensors = 255;
+	constexpr uint16_t cyclicBufferSize = 1000;
+
 }

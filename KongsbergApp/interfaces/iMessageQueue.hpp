@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "../utils/ErrorCode.hpp"
+#include "boost/circular_buffer.hpp"
 
 namespace interface
 {
@@ -13,6 +14,6 @@ namespace interface
 		virtual utils::ErrorCode pushQueue(uint8_t id, int message ) = 0;
 		virtual int popQueue( uint8_t id) = 0;
 
-		std::vector<std::vector<int>> queue;
+		std::vector<boost::circular_buffer<int>> queue;
 	};
 };

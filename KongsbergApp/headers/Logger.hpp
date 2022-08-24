@@ -1,3 +1,10 @@
+/**
+* @File Logger.hpp
+* @brief: this module is responsible for logging on this moment on stdout.
+*
+* @Owner Damian Panasiuk
+*/
+
 #pragma once
 
 #include "../interfaces/iLifeCycleMenager.hpp"

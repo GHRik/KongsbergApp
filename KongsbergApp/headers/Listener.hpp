@@ -5,26 +5,25 @@
 #include "../utils/config.hpp"
 #include <thread>
 #include <chrono>
-#include <iostream>
 
 namespace listenerLayer
 {
 	class Listener : public interface::iListenerService
 	{
 	public:
-		Listener(interface::iListenerMenager* listenerMenager, int id, std::string name, int maxValue, int minValue, int frequency);
-		virtual  ~Listener();
-		utils::ErrorCode run();
-		utils::ErrorCode setStatus(utils::Status status);
+		Listener() = delete;
+		Listener(interface::iListenerMenager* listenerMenager, int id, const std::string &name, int maxValue, int minValue, int frequency);
+		virtual  ~Listener() = default;
+		utils::ErrorCode run() override;
+		utils::ErrorCode setStatus(utils::Status status) override;
 	private:
 		interface::iListenerMenager* ListenerMenager;
 
-		std::string name;
-		int maxValue;
-		int minValue;
-		int frequency;
-		int id;
-		bool semaphore;
+		const std::string name;
+		const int maxValue;
+		const int minValue;
+		const int frequency;
+		const int id;
 
 		std::thread thread;
 

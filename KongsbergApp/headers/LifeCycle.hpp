@@ -12,19 +12,20 @@ namespace common
         public interface::iLifeCycleMenager
     {
     public:
-        LifeCycle(interface::iLogger* logger);
-        virtual ~LifeCycle();
-        utils::ErrorCode run();
-        utils::ErrorCode stop();
+        LifeCycle() = delete;
+        explicit LifeCycle(interface::iLogger* logger);
+        virtual ~LifeCycle() = default;
+        utils::ErrorCode run() override;
+        utils::ErrorCode stop() override;
         utils::ErrorCode registry(interface::iLifeCycleService* service);
 
     private:
-        bool isAllServicesInStatus(utils::Status status);
-        utils::ErrorCode setAllServicesInStatus(utils::Status status);
+        bool isAllServicesInStatus(utils::Status status) const;
+        utils::ErrorCode setAllServicesInStatus(utils::Status status) const;
 
         std::vector<interface::iLifeCycleService* > wantToBeAlive;
         interface::iLogger* logger;
-        utils::Status status;
+        bool isFirstRun;
     };
 }
 

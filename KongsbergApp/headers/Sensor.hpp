@@ -10,17 +10,18 @@ namespace sensorLayer
 	class Sensor : public interface::iSensorService
 	{
 	public:
+		Sensor() = delete;
 		Sensor( interface::iSensorMenager* sensorMenager, int id, int freq, int minRange, int maxRange);
-		virtual  ~Sensor();
+		virtual  ~Sensor() = default;
 
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status) override;
+		utils::ErrorCode run() override;
 	private:
 		interface::iSensorMenager* sensorMenager;
-		int id;
-		int freq;
-		int minRange;
-		int maxRange;
+		const int id;
+		const int freq;
+		const int minRange;
+		const int maxRange;
 
 		std::thread thread;
 	};

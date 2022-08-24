@@ -16,18 +16,21 @@ namespace utils
 	const std::string JSON_FREQ = "FrequencyHz";
 	const std::uint8_t NUMBER_OF_CONFIG_ELEM = 6;
 
-	const std::uint8_t ID_PLACE = 0;
-	const std::uint8_t NAME_PLACE = 1;
-	const std::uint8_t MIN_PLACE = 2;
-	const std::uint8_t MAX_PLACE = 3;
-	const std::uint8_t ALIVE_PLACE = 4;
-	const std::uint8_t FREQ_PLACE = 5;
+	constexpr std::uint8_t ID_PLACE = 0;
+	constexpr std::uint8_t NAME_PLACE = 1;
+	constexpr std::uint8_t MIN_PLACE = 2;
+	constexpr std::uint8_t MAX_PLACE = 3;
+	constexpr std::uint8_t ALIVE_PLACE = 4;
+	constexpr std::uint8_t FREQ_PLACE = 5;
 
 	const std::string PREFIX_MESSAGE = "$FIX";
 
-	const float alarmPercent = 0.1;
-	const float warnPercent = 0.15;
+	constexpr double alarmPercent = 0.1;
+	constexpr double warnPercent = 0.15;
 
-	const uint16_t logSleepMilisec = 1000;
+	constexpr uint16_t logSleepMilisec = 1000;
+
+	constexpr uint8_t maxAmountOfSensors = 255;
+	constexpr uint16_t cyclicBufferSize = 1000;
 
 }

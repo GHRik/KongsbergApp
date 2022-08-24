@@ -2,22 +2,10 @@
 
 
 sensorLayer::Sensor::Sensor(interface::iSensorMenager* sensorMenager, int id, int freq, int minRange, int maxRange)
+	: sensorMenager(sensorMenager), id(id), freq(freq), minRange(minRange), maxRange(maxRange)
 {
-	this->sensorMenager = sensorMenager;
-	this->id = id;
-	this->freq = freq;
-	this->minRange = minRange;
-	this->maxRange = maxRange;
 	sensorMenager->registerSensor(this);
-
-
 }
-
-sensorLayer::Sensor::~Sensor()
-{
-
-}
-
 utils::ErrorCode sensorLayer::Sensor::run()
 {
 	std::chrono::seconds timespan(1/this->freq);
@@ -25,13 +13,11 @@ utils::ErrorCode sensorLayer::Sensor::run()
 	int startRange = this->minRange;
 	int endRange = this->maxRange;
 	std::uniform_int_distribution<> distr(startRange, endRange);
-	int random = 0;
 	this->status = utils::Status::WORK;
 	while (this->status == utils::Status::WORK)
 	{
 		std::mt19937 gen(rd());
-		random = distr(gen);
-		this->sensorMenager->pushNotPreparedMessage(this->id, random);
+		this->sensorMenager->pushNotPreparedMessage(this->id, distr(gen));
 		std::this_thread::sleep_for(timespan);
 	}
 	return utils::ErrorCode::OK;

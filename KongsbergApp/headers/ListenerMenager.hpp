@@ -13,17 +13,17 @@ namespace common
 	class ListenerMenager : public interface::iListenerMenager, public interface::iLifeCycleService
 	{
 	public:
+		ListenerMenager() = delete;
 		ListenerMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);
-		~ListenerMenager();
+		virtual ~ListenerMenager();
 
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status) override;
+		utils::ErrorCode run() override;
 
-		utils::ErrorCode registerListener(interface::iListenerService* listenerService);
-		int popNotPreparedMessage(uint8_t id);
-		utils::ErrorCode pushPreparedMessage(uint8_t id, int message);
-		utils::ErrorCode runListener();
-		utils::ErrorCode logOutput(std::string output);
+		utils::ErrorCode registerListener(interface::iListenerService* listenerService) override;
+		int popNotPreparedMessage(uint8_t id) override;
+		utils::ErrorCode runListener() override;
+		utils::ErrorCode logOutput(const std::string &output) override;
 
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;
@@ -32,5 +32,7 @@ namespace common
 		interface::iMessageQueue* messageQueue;
 
 		std::vector<interface::iListenerService*> listenerWantToBeAlive;
+
+		void deleteListeners();
 	};
 }

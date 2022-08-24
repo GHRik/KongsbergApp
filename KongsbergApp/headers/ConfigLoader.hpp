@@ -4,9 +4,8 @@
 #include "../interfaces/iLifeCycleMenager.hpp"
 #include "../interfaces/iLogger.hpp"
 #include "../utils/config.hpp"
-#include <fstream>
 #include "../include/nlohmann/json.hpp"
-#include <unordered_map>
+#include <fstream>
 #include <sstream>
 
 
@@ -15,21 +14,21 @@ namespace common
 	class ConfigLoader : public interface::iConfigMenager, public interface::iLifeCycleService
 	{
 	public:
+		ConfigLoader() = delete;
 		ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
-		virtual ~ConfigLoader();
-		uint8_t getNumberAliveSensors();
-		std::vector<int> getAliveSensorsID();
-		std::vector<int> getAliveSensorsMin();
-		std::vector<int> getAliveSensorsMax();
-		std::vector<int> getAliveSensorsFreq();
-		std::vector <std::string> getAliveSensorsName();
+		virtual ~ConfigLoader() = default;
+		const uint8_t getNumberAliveSensors() const override;
+		const std::vector<int> getAliveSensorsID() const override;
+		const std::vector<int> getAliveSensorsMin() const override;
+		const std::vector<int> getAliveSensorsMax() const override;
+		const std::vector<int> getAliveSensorsFreq() const override;
+		const std::vector<std::string> getAliveSensorsName() const override;
 
-		utils::ErrorCode setStatus(utils::Status status);
-		utils::ErrorCode run();
+		utils::ErrorCode setStatus(utils::Status status) override;
+		utils::ErrorCode run() override;
 	private:
 		interface::iLifeCycleMenager* lifeCycleMenager;
 		interface::iLogger* logger;
-		std::string content;
 
 		std::vector<int> aliveSensorsID;
 		std::vector<int> aliveSensorsMin;
@@ -38,9 +37,13 @@ namespace common
 		std::vector<std::string> aliveSensorsName;
 		uint8_t aliveSensorsAmount;
 
-		void translateConfig(std::vector<std::vector<std::string>> configToTranslate);
-		bool isConfigValid(std::vector<std::vector<std::string>> configToValid);
-		bool is_number(const std::string& s);
+		void translateConfig(std::vector<std::vector<std::string>> &configToTranslate);
+		bool isConfigValid( const std::vector<std::vector<std::string>> &configToValid) const;
+		void clearSensorsResource();
+		bool isIDUnique(const std::vector<std::vector<std::string>> &config) const;
+		bool isIDFromUint8( const std::vector<std::vector<std::string>> &config) const;
+		bool isNumberInNecesarryField( const std::vector<std::vector<std::string>> &config) const;
+		bool is_number(const std::string& s) const;
 
 	};
 }

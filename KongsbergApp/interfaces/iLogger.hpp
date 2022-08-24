@@ -10,8 +10,7 @@ namespace interface
 	public:
 		iLogger(){};
 		virtual ~iLogger(){};
-		virtual utils::ErrorCode logError(std::string tag, std::string message) = 0;
-		virtual utils::ErrorCode logWarn(std::string tag, std::string message) = 0;
-		virtual utils::ErrorCode logInfo(std::string tag, std::string message) = 0;
+		virtual utils::ErrorCode logError(const std::string &tag, const std::string &message) = 0;
+		virtual utils::ErrorCode logInfo(const std::string &tag, const std::string &message) = 0;
 	};
 };

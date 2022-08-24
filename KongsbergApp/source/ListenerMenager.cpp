@@ -1,21 +1,13 @@
 #include "../headers/ListenerMenager.hpp"
 
 common::ListenerMenager::ListenerMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue)
+	: logger(logger), lifeCycleMenager(lifeCycleMenager), configLoader(configLoader), messageQueue(messageQueue)
 {
-	this->logger = logger;
-	this->lifeCycleMenager = lifeCycleMenager;
-	this->configLoader = configLoader;
-	this->messageQueue = messageQueue;
 	this->lifeCycleMenager->registry(this);
 }
 common::ListenerMenager::~ListenerMenager()
 {
-	for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
-	{
-		if(listenerWantToBeAlive.at(i) != nullptr)
-			delete listenerWantToBeAlive.at(i);
-	}
-
+	//deleteListeners();
 }
 
 utils::ErrorCode common::ListenerMenager::run()
@@ -40,7 +32,7 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 			int min = configLoader->getAliveSensorsMin().at(i);
 			int max = configLoader->getAliveSensorsMax().at(i);
 			int freq = configLoader->getAliveSensorsFreq().at(i);
-			listenerLayer::Listener* listener = new listenerLayer::Listener(this, id, name, max, min, freq);
+			new listenerLayer::Listener(this, id, name, max, min, freq);
 		}
 		runListener();
 		break;
@@ -54,7 +46,6 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 		{
 			listenerWantToBeAlive.at(i)->setStatus(utils::Status::WORK);
 		}
-
 		break;
 	case utils::Status::STOP:
 		this->status = utils::Status::STOP;
@@ -62,11 +53,7 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 		{
 			listenerWantToBeAlive.at(i)->setStatus(utils::Status::STOP);
 		}
-		for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
-		{
-			if (listenerWantToBeAlive.at(i) != nullptr)
-				delete listenerWantToBeAlive.at(i);
-		}
+		deleteListeners();
 		listenerWantToBeAlive.clear();
 		break;
 
@@ -77,6 +64,7 @@ utils::ErrorCode common::ListenerMenager::setStatus(utils::Status status)
 
 utils::ErrorCode common::ListenerMenager::registerListener(interface::iListenerService* listenerService)
 {
+
 	listenerWantToBeAlive.push_back(listenerService);
 	return utils::ErrorCode::OK;
 }
@@ -84,11 +72,6 @@ utils::ErrorCode common::ListenerMenager::registerListener(interface::iListenerS
 int common::ListenerMenager::popNotPreparedMessage(uint8_t id)
 {
 	return messageQueue->popQueue(id);
-}
-
-utils::ErrorCode common::ListenerMenager::pushPreparedMessage(uint8_t id, int message)
-{
-	return messageQueue->pushQueue(id, message);
 }
 
 utils::ErrorCode common::ListenerMenager::runListener()
@@ -100,7 +83,15 @@ utils::ErrorCode common::ListenerMenager::runListener()
 	return utils::ErrorCode::OK;
 }
 
-utils::ErrorCode common::ListenerMenager::logOutput(std::string output)
+utils::ErrorCode common::ListenerMenager::logOutput(const std::string &output)
 {
 	return this->logger->logInfo("Sensor output: ", output);
+}
+
+void common::ListenerMenager::deleteListeners()
+{
+	for (int i = 0; i < listenerWantToBeAlive.size(); ++i)
+	{
+		delete listenerWantToBeAlive.at(i);
+	}
 }

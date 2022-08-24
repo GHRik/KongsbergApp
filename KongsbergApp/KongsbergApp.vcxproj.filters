@@ -101,9 +101,6 @@
     <ClInclude Include="headers\MessageQueue.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utils\queue_id.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="utils\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

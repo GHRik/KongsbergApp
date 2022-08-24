@@ -1,22 +1,24 @@
 #include "../headers/LifeCycle.hpp"
 
 common::LifeCycle::LifeCycle(interface::iLogger* logger)
-{
-	this->logger = logger;
-}
-
-common::LifeCycle::~LifeCycle()
+	: logger(logger), isFirstRun(true)
 {
 }
 
 utils::ErrorCode common::LifeCycle::run()
 {
+	if (isAllServicesInStatus(utils::Status::CREATE) == false && isFirstRun == true)
+	{
+		logger->logError("After CREATE", "Some of services dont start corectly");
+		return utils::ErrorCode::NOK;
+	}
 	if (setAllServicesInStatus(utils::Status::INIT) == utils::ErrorCode::OK && isAllServicesInStatus(utils::Status::INIT) == true)
 	{
 		if (setAllServicesInStatus(utils::Status::START) == utils::ErrorCode::OK && isAllServicesInStatus(utils::START) == true)
 		{
 			if (setAllServicesInStatus(utils::Status::WORK) == utils::ErrorCode::OK && isAllServicesInStatus(utils::Status::WORK) == true)
 			{
+				isFirstRun = false;
 				return utils::ErrorCode::OK;
 			}
 			else
@@ -50,7 +52,7 @@ utils::ErrorCode common::LifeCycle::registry(interface::iLifeCycleService* servi
 	return utils::ErrorCode::OK;
 }
 
-bool common::LifeCycle::isAllServicesInStatus(utils::Status status)
+bool common::LifeCycle::isAllServicesInStatus(utils::Status status) const
 {
 	for(int i = 0; i < wantToBeAlive.size(); ++i)
 	{
@@ -62,12 +64,10 @@ bool common::LifeCycle::isAllServicesInStatus(utils::Status status)
 	return true;
 }
 
-utils::ErrorCode common::LifeCycle::setAllServicesInStatus(utils::Status status)
+utils::ErrorCode common::LifeCycle::setAllServicesInStatus(utils::Status status) const
 {
 	for (int i = 0; i < wantToBeAlive.size(); ++i)
 	{
-		if (wantToBeAlive.at(i) == nullptr)
-			logger->logError("Null", "Ptr");
 		if (wantToBeAlive.at(i)->setStatus(status) != utils::ErrorCode::OK)
 		{
 			logger->logError(utils::ToString(status), "Unable to run service " + std::to_string(i+1));

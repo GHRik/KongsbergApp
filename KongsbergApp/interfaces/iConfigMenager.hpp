@@ -12,11 +12,11 @@ namespace interface
 	public:
 		iConfigMenager(){};
 		virtual ~iConfigMenager(){};
-		virtual uint8_t getNumberAliveSensors() = 0;
-		virtual std::vector<int> getAliveSensorsID() = 0;
-		virtual std::vector<int> getAliveSensorsMin() = 0;
-		virtual std::vector<int> getAliveSensorsMax() = 0;
-		virtual std::vector<int> getAliveSensorsFreq() = 0;
-		virtual std::vector<std::string> getAliveSensorsName() = 0;
+		const virtual uint8_t getNumberAliveSensors() const = 0;
+		const virtual std::vector<int> getAliveSensorsID() const = 0;
+		const virtual std::vector<int> getAliveSensorsMin() const = 0;
+		const virtual std::vector<int> getAliveSensorsMax() const = 0;
+		const virtual std::vector<int> getAliveSensorsFreq() const = 0;
+		const virtual std::vector<std::string> getAliveSensorsName() const = 0;
 	};
 };

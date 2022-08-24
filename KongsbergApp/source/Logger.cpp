@@ -26,7 +26,7 @@ utils::ErrorCode common::Logger::logInfo(std::string tag, std::string message)
 	return utils::ErrorCode::OK;
 }
 
-std::string common::Logger::logEvent(std::string tag, std::string message)
+std::string common::Logger::logEvent(std::string &tag, std::string &message) const
 {
 	std::string result = "";
 	result += tag + "\t" + message + "\n";

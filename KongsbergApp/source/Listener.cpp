@@ -7,11 +7,6 @@ listenerLayer::Listener::Listener(interface::iListenerMenager* listenerMenager, 
 	listenerMenager->registerListener(this);
 }
 
-listenerLayer::Listener::~Listener()
-{
-
-}
-
 utils::ErrorCode listenerLayer::Listener::run()
 {
 	std::chrono::milliseconds timespan(utils::logSleepMilisec);

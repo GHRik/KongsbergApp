@@ -1,24 +1,14 @@
 #include "../headers/SensorMenager.hpp"
 
 common::SensorMenager::SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue)
+	: logger(logger), lifeCycleMenager(lifeCycleMenager), configLoader(configLoader), messageQueue(messageQueue)
 {
-	this->logger = logger;
-	this->lifeCycleMenager = lifeCycleMenager;
-	this->messageQueue = messageQueue;
-	this->configLoader = configLoader;
 	this->lifeCycleMenager->registry(this);
-
 }
 
 common::SensorMenager::~SensorMenager()
 {
-	for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
-	{
-		if (sensorsWantToBeAlive.at(i) != nullptr)
-		{
-			delete sensorsWantToBeAlive.at(i);
-		}
-	}
+	deleteSensors();
 }
 
 utils::ErrorCode common::SensorMenager::run()
@@ -62,13 +52,7 @@ utils::ErrorCode common::SensorMenager::setStatus(utils::Status status)
 		{
 			sensorsWantToBeAlive.at(i)->setStatus(utils::Status::STOP);
 		}
-		for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
-		{
-			if (sensorsWantToBeAlive.at(i) != nullptr)
-			{
-				delete sensorsWantToBeAlive.at(i);
-			}
-		}
+		deleteSensors();
 		sensorsWantToBeAlive.clear();
 		break;
 
@@ -94,4 +78,15 @@ utils::ErrorCode common::SensorMenager::runSensor()
 		sensorsWantToBeAlive.at(i)->setStatus(utils::Status::INIT);
 	}
 	return utils::ErrorCode::OK;
+}
+
+void common::SensorMenager::deleteSensors()
+{
+	for (int i = 0; i < sensorsWantToBeAlive.size(); ++i)
+	{
+		if (sensorsWantToBeAlive.at(i) != nullptr)
+		{
+			delete sensorsWantToBeAlive.at(i);
+		}
+	}
 }

@@ -2,22 +2,10 @@
 
 
 sensorLayer::Sensor::Sensor(interface::iSensorMenager* sensorMenager, int id, int freq, int minRange, int maxRange)
+	: sensorMenager(sensorMenager), id(id), freq(freq), minRange(minRange), maxRange(maxRange)
 {
-	this->sensorMenager = sensorMenager;
-	this->id = id;
-	this->freq = freq;
-	this->minRange = minRange;
-	this->maxRange = maxRange;
 	sensorMenager->registerSensor(this);
-
-
 }
-
-sensorLayer::Sensor::~Sensor()
-{
-
-}
-
 utils::ErrorCode sensorLayer::Sensor::run()
 {
 	std::chrono::seconds timespan(1/this->freq);

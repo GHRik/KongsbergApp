@@ -1,9 +1,5 @@
 #include "../headers/MessageQueue.hpp"
 
-common::MessageQueue::~MessageQueue()
-{
-
-}
 
 common::MessageQueue::MessageQueue()
 {

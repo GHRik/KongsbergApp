@@ -11,8 +11,8 @@ namespace common
 	class MessageQueue : public interface::iMessageQueue
 	{
 	public:
-		MessageQueue();
-		virtual ~MessageQueue();;
+		explicit MessageQueue();
+		virtual ~MessageQueue() = default;
 
 		utils::ErrorCode pushQueue(uint8_t id, int message);
 		int popQueue(uint8_t id);

@@ -2,7 +2,6 @@
 
 #include <vector>
 #include "../utils/ErrorCode.hpp"
-#include "../utils/queue_id.hpp"
 
 namespace interface
 {

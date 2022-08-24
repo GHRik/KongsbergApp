@@ -13,8 +13,9 @@ namespace common
 	class SensorMenager : public interface::iSensorMenager, public interface::iLifeCycleService
 	{
 	public:
+		explicit SensorMenager() = default;
 		SensorMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);
-		~SensorMenager();
+		virtual ~SensorMenager();
 
 		utils::ErrorCode run();
 		utils::ErrorCode setStatus(utils::Status status);
@@ -29,5 +30,7 @@ namespace common
 		interface::iConfigMenager* configLoader;
 
 		std::vector<interface::iSensorService*> sensorsWantToBeAlive;
+
+		void deleteSensors();
 	};
 }

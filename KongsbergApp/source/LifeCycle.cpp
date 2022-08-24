@@ -5,10 +5,6 @@ common::LifeCycle::LifeCycle(interface::iLogger* logger)
 {
 }
 
-common::LifeCycle::~LifeCycle()
-{
-}
-
 utils::ErrorCode common::LifeCycle::run()
 {
 	if (isAllServicesInStatus(utils::Status::CREATE) == false && isFirstRun == true)

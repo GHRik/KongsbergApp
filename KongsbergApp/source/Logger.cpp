@@ -1,15 +1,6 @@
 #include "../headers/Logger.hpp"
 #include <iostream>
 
-common::Logger::Logger()
-{
-}
-
-common::Logger::~Logger()
-{
-}
-
-
 utils::ErrorCode common::Logger::logError(std::string tag, std::string message)
 {
 	std::cout << "ERROR: " << this->logEvent(tag, message);

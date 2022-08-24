@@ -13,9 +13,9 @@ namespace common
 	class ListenerMenager : public interface::iListenerMenager, public interface::iLifeCycleService
 	{
 	public:
-		ListenerMenager() = default;
+		explicit ListenerMenager() = default;
 		ListenerMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);
-		~ListenerMenager();
+		virtual ~ListenerMenager();
 
 		utils::ErrorCode setStatus(utils::Status status);
 		utils::ErrorCode run();

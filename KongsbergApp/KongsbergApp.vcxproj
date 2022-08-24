@@ -202,7 +202,6 @@
     <ClInclude Include="interfaces\iSensorService.hpp" />
     <ClInclude Include="utils\config.hpp" />
     <ClInclude Include="utils\ErrorCode.hpp" />
-    <ClInclude Include="utils\queue_id.hpp" />
     <ClInclude Include="utils\Status.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

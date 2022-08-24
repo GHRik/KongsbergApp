@@ -10,8 +10,8 @@ namespace common
 	class Logger : public interface::iLogger
 	{
 	public:
-		Logger();
-		virtual ~Logger();
+		explicit Logger() = default;
+		virtual ~Logger() = default;
 		utils::ErrorCode logError(std::string tag, std::string message);
 		utils::ErrorCode logWarn(std::string tag, std::string message);
 		utils::ErrorCode logInfo(std::string tag, std::string message);

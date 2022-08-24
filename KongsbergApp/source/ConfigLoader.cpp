@@ -6,10 +6,6 @@ common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeC
 	this->lifeCycleMenager->registry(this);
 }
 
-common::ConfigLoader::~ConfigLoader()
-{
-}
-
 const uint8_t common::ConfigLoader::getNumberAliveSensors() const
 {
 	return aliveSensorsAmount;

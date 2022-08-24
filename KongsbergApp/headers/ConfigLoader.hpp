@@ -14,8 +14,9 @@ namespace common
 	class ConfigLoader : public interface::iConfigMenager, public interface::iLifeCycleService
 	{
 	public:
+		explicit ConfigLoader() = default;
 		ConfigLoader(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);
-		virtual ~ConfigLoader();
+		virtual ~ConfigLoader() = default;
 		const uint8_t getNumberAliveSensors() const;
 		const std::vector<int> getAliveSensorsID() const;
 		const std::vector<int> getAliveSensorsMin() const;

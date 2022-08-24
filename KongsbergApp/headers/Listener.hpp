@@ -11,9 +11,9 @@ namespace listenerLayer
 	class Listener : public interface::iListenerService
 	{
 	public:
-		Listener() = default;
+		explicit Listener() = default;
 		Listener(interface::iListenerMenager* listenerMenager, int id, std::string name, int maxValue, int minValue, int frequency);
-		virtual  ~Listener();
+		virtual  ~Listener() = default;
 		utils::ErrorCode run();
 		utils::ErrorCode setStatus(utils::Status status);
 	private:

@@ -13,6 +13,7 @@ namespace common
 	class ListenerMenager : public interface::iListenerMenager, public interface::iLifeCycleService
 	{
 	public:
+		ListenerMenager() = default;
 		ListenerMenager(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);
 		~ListenerMenager();
 
@@ -32,5 +33,7 @@ namespace common
 		interface::iMessageQueue* messageQueue;
 
 		std::vector<interface::iListenerService*> listenerWantToBeAlive;
+
+		void deleteListeners();
 	};
 }

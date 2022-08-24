@@ -4,7 +4,6 @@ common::ConfigLoader::ConfigLoader(interface::iLogger* logger, interface::iLifeC
 	: logger(logger), lifeCycleMenager(lifeCycleMenager), aliveSensorsAmount(0)
 {
 	this->lifeCycleMenager->registry(this);
-	status = utils::Status::CREATE;
 }
 
 common::ConfigLoader::~ConfigLoader()

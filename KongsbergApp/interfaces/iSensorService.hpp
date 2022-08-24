@@ -8,7 +8,9 @@ namespace interface
 	class iSensorService
 	{
 	public:
-		iSensorService(){};
+		iSensorService(){
+			this->status = utils::Status::CREATE;
+		};
 		virtual ~iSensorService() {};
 		virtual utils::ErrorCode setStatus(utils::Status status) = 0;
 		virtual utils::Status getStatus()

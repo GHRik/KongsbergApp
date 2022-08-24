@@ -1,0 +1,54 @@
+\hypertarget{classcommon_1_1_sensor_menager}{}\doxysection{common\+::Sensor\+Menager Class Reference}
+\label{classcommon_1_1_sensor_menager}\index{common::SensorMenager@{common::SensorMenager}}
+Inheritance diagram for common\+::Sensor\+Menager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcommon_1_1_sensor_menager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcommon_1_1_sensor_menager_ab062f64b4c586ed6ac26aa854504e87c}\label{classcommon_1_1_sensor_menager_ab062f64b4c586ed6ac26aa854504e87c}} 
+{\bfseries Sensor\+Menager} (interface\+::i\+Logger $\ast$logger, interface\+::i\+Life\+Cycle\+Menager $\ast$life\+Cycle\+Menager, interface\+::i\+Config\+Menager $\ast$config\+Loader, interface\+::i\+Message\+Queue $\ast$message\+Queue)
+\item 
+\mbox{\Hypertarget{classcommon_1_1_sensor_menager_a253b476095b0c19c96cff087f087d4d3}\label{classcommon_1_1_sensor_menager_a253b476095b0c19c96cff087f087d4d3}} 
+utils\+::\+Error\+Code {\bfseries run} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_sensor_menager_a66dacb0c19aee4f9a8cced7f54718c0b}{set\+Status}} (utils\+::\+Status status) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_sensor_menager_a7da72c659f872510d49835b4f71e7c56}{register\+Sensor}} (interface\+::i\+Sensor\+Service $\ast$sensor\+Service) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_sensor_menager_ad860636db3f265744a3e9549cc2b68be}{push\+Not\+Prepared\+Message}} (uint8\+\_\+t id, int message) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcommon_1_1_sensor_menager_ad860636db3f265744a3e9549cc2b68be}\label{classcommon_1_1_sensor_menager_ad860636db3f265744a3e9549cc2b68be}} 
+\index{common::SensorMenager@{common::SensorMenager}!pushNotPreparedMessage@{pushNotPreparedMessage}}
+\index{pushNotPreparedMessage@{pushNotPreparedMessage}!common::SensorMenager@{common::SensorMenager}}
+\doxysubsubsection{\texorpdfstring{pushNotPreparedMessage()}{pushNotPreparedMessage()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Sensor\+Menager\+::push\+Not\+Prepared\+Message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id,  }\item[{int}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+On this function Sensors by \mbox{\hyperlink{classcommon_1_1_sensor_menager}{Sensor\+Menager}} send data on cyclic\+Buffor. 
+\begin{DoxyParams}{Parameters}
+{\em } & bufor id, message with data \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcommon_1_1_sensor_menager_a7da72c659f872510d49835b4f71e7c56}\label{classcommon_1_1_sensor_menager_a7da72c659f872510d49835b4f71e7c56}} 
+\index{common::SensorMenager@{common::SensorMenager}!registerSensor@{registerSensor}}
+\index{registerSensor@{registerSensor}!common::SensorMenager@{common::SensorMenager}}
+\doxysubsubsection{\texorpdfstring{registerSensor()}{registerSensor()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Sensor\+Menager\+::register\+Sensor (\begin{DoxyParamCaption}\item[{interface\+::i\+Sensor\+Service $\ast$}]{sensor\+Service }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+On this function Sensors can registry to \mbox{\hyperlink{classcommon_1_1_sensor_menager}{Sensor\+Menager}}. Registry mean add to vector. With pointers on Sensors \mbox{\hyperlink{classcommon_1_1_sensor_menager}{Sensor\+Menager}} can easly menage Sensors like destroy, create etc. \mbox{\Hypertarget{classcommon_1_1_sensor_menager_a66dacb0c19aee4f9a8cced7f54718c0b}\label{classcommon_1_1_sensor_menager_a66dacb0c19aee4f9a8cced7f54718c0b}} 
+\index{common::SensorMenager@{common::SensorMenager}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!common::SensorMenager@{common::SensorMenager}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Sensor\+Menager\+::set\+Status (\begin{DoxyParamCaption}\item[{utils\+::\+Status}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\hyperlink{classcommon_1_1_life_cycle}{Life\+Cycle}} module can menage status with this function. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Sensor\+Menager.\+hpp\end{DoxyCompactItemize}

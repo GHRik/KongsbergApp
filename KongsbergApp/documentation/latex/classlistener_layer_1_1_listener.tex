@@ -1,0 +1,38 @@
+\hypertarget{classlistener_layer_1_1_listener}{}\doxysection{listener\+Layer\+::Listener Class Reference}
+\label{classlistener_layer_1_1_listener}\index{listenerLayer::Listener@{listenerLayer::Listener}}
+Inheritance diagram for listener\+Layer\+::Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classlistener_layer_1_1_listener}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classlistener_layer_1_1_listener_a48ded79ee824b945975f3ed16a2850f9}\label{classlistener_layer_1_1_listener_a48ded79ee824b945975f3ed16a2850f9}} 
+{\bfseries Listener} (interface\+::i\+Listener\+Menager $\ast$listener\+Menager, int id, const std\+::string \&name, int max\+Value, int min\+Value, int frequency)
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classlistener_layer_1_1_listener_a7c03fb6028c7f40d03af10477d79a916}{run}} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classlistener_layer_1_1_listener_a53ad3fa59dd4d15bc2261cf3f4f027aa}{set\+Status}} (utils\+::\+Status status) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlistener_layer_1_1_listener_a7c03fb6028c7f40d03af10477d79a916}\label{classlistener_layer_1_1_listener_a7c03fb6028c7f40d03af10477d79a916}} 
+\index{listenerLayer::Listener@{listenerLayer::Listener}!run@{run}}
+\index{run@{run}!listenerLayer::Listener@{listenerLayer::Listener}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code listener\+Layer\+::\+Listener\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Is routine. Run in separated thread. On this routine listener get data from cyclic buffer and wrapp it. Wrapped data is logged by Listener\+Menager and print. \mbox{\Hypertarget{classlistener_layer_1_1_listener_a53ad3fa59dd4d15bc2261cf3f4f027aa}\label{classlistener_layer_1_1_listener_a53ad3fa59dd4d15bc2261cf3f4f027aa}} 
+\index{listenerLayer::Listener@{listenerLayer::Listener}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!listenerLayer::Listener@{listenerLayer::Listener}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code listener\+Layer\+::\+Listener\+::set\+Status (\begin{DoxyParamCaption}\item[{utils\+::\+Status}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Listener\+Menager module can menage status with this function. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Listener.\+hpp\end{DoxyCompactItemize}

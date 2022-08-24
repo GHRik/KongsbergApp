@@ -1,0 +1,116 @@
+\hypertarget{classcommon_1_1_config_loader}{}\doxysection{common\+::Config\+Loader Class Reference}
+\label{classcommon_1_1_config_loader}\index{common::ConfigLoader@{common::ConfigLoader}}
+Inheritance diagram for common\+::Config\+Loader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcommon_1_1_config_loader}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcommon_1_1_config_loader_a5b894a087edbe34f6d4bb11ced18ee6c}\label{classcommon_1_1_config_loader_a5b894a087edbe34f6d4bb11ced18ee6c}} 
+{\bfseries Config\+Loader} (interface\+::i\+Logger $\ast$logger, interface\+::i\+Life\+Cycle\+Menager $\ast$life\+Cycle\+Menager)
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{classcommon_1_1_config_loader_a930c484c7f5d64d94318aa9f921555ed}{get\+Number\+Alive\+Sensors}} () const override
+\item 
+const std\+::vector$<$ int $>$ \mbox{\hyperlink{classcommon_1_1_config_loader_afc967683eb2e9c569c74bcaa6cebfb9c}{get\+Alive\+Sensors\+ID}} () const override
+\item 
+const std\+::vector$<$ int $>$ \mbox{\hyperlink{classcommon_1_1_config_loader_ac1d344d9954ad5b49e428cb3160318fb}{get\+Alive\+Sensors\+Min}} () const override
+\item 
+const std\+::vector$<$ int $>$ \mbox{\hyperlink{classcommon_1_1_config_loader_a7743b04e60ee79810098b94ddc324701}{get\+Alive\+Sensors\+Max}} () const override
+\item 
+const std\+::vector$<$ int $>$ \mbox{\hyperlink{classcommon_1_1_config_loader_aaa596b8bab722201f91de08a82618f1e}{get\+Alive\+Sensors\+Freq}} () const override
+\item 
+const std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classcommon_1_1_config_loader_af0cf4bc45c5533bda4b67e7895626978}{get\+Alive\+Sensors\+Name}} () const override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_config_loader_a7aa83d56875ef47d75a378d827a25167}{set\+Status}} (utils\+::\+Status status) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_config_loader_a474986dccfaf3638797adf4b7bcbf398}{run}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_aaa596b8bab722201f91de08a82618f1e}\label{classcommon_1_1_config_loader_aaa596b8bab722201f91de08a82618f1e}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getAliveSensorsFreq@{getAliveSensorsFreq}}
+\index{getAliveSensorsFreq@{getAliveSensorsFreq}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getAliveSensorsFreq()}{getAliveSensorsFreq()}}
+{\footnotesize\ttfamily const std\+::vector$<$ int $>$ common\+::\+Config\+Loader\+::get\+Alive\+Sensors\+Freq (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a vector of sensors frequency in Hz. In vector are only alive sensors.
+
+\begin{DoxyReturn}{Returns}
+vector of frequency in Hz from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_afc967683eb2e9c569c74bcaa6cebfb9c}\label{classcommon_1_1_config_loader_afc967683eb2e9c569c74bcaa6cebfb9c}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getAliveSensorsID@{getAliveSensorsID}}
+\index{getAliveSensorsID@{getAliveSensorsID}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getAliveSensorsID()}{getAliveSensorsID()}}
+{\footnotesize\ttfamily const std\+::vector$<$ int $>$ common\+::\+Config\+Loader\+::get\+Alive\+Sensors\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a vector of sensors id. In vector are only alive sensors.
+
+\begin{DoxyReturn}{Returns}
+vector of ids from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_a7743b04e60ee79810098b94ddc324701}\label{classcommon_1_1_config_loader_a7743b04e60ee79810098b94ddc324701}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getAliveSensorsMax@{getAliveSensorsMax}}
+\index{getAliveSensorsMax@{getAliveSensorsMax}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getAliveSensorsMax()}{getAliveSensorsMax()}}
+{\footnotesize\ttfamily const std\+::vector$<$ int $>$ common\+::\+Config\+Loader\+::get\+Alive\+Sensors\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a vector of sensors max value. In vector are only alive sensors.
+
+\begin{DoxyReturn}{Returns}
+vector of max value from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_ac1d344d9954ad5b49e428cb3160318fb}\label{classcommon_1_1_config_loader_ac1d344d9954ad5b49e428cb3160318fb}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getAliveSensorsMin@{getAliveSensorsMin}}
+\index{getAliveSensorsMin@{getAliveSensorsMin}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getAliveSensorsMin()}{getAliveSensorsMin()}}
+{\footnotesize\ttfamily const std\+::vector$<$ int $>$ common\+::\+Config\+Loader\+::get\+Alive\+Sensors\+Min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a vector of sensors min value. In vector are only alive sensors.
+
+\begin{DoxyReturn}{Returns}
+vector of min value from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_af0cf4bc45c5533bda4b67e7895626978}\label{classcommon_1_1_config_loader_af0cf4bc45c5533bda4b67e7895626978}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getAliveSensorsName@{getAliveSensorsName}}
+\index{getAliveSensorsName@{getAliveSensorsName}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getAliveSensorsName()}{getAliveSensorsName()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ common\+::\+Config\+Loader\+::get\+Alive\+Sensors\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a vector of sensors name. In vector are only alive sensors.
+
+\begin{DoxyReturn}{Returns}
+vector of name from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_a930c484c7f5d64d94318aa9f921555ed}\label{classcommon_1_1_config_loader_a930c484c7f5d64d94318aa9f921555ed}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!getNumberAliveSensors@{getNumberAliveSensors}}
+\index{getNumberAliveSensors@{getNumberAliveSensors}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{getNumberAliveSensors()}{getNumberAliveSensors()}}
+{\footnotesize\ttfamily const uint8\+\_\+t common\+::\+Config\+Loader\+::get\+Number\+Alive\+Sensors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}}
+
+After parse json this function will return a number of sensors which have \char`\"{}alive\+: true\char`\"{} in config.\+json
+
+\begin{DoxyReturn}{Returns}
+amount of sensors from config.\+json 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_config_loader_a474986dccfaf3638797adf4b7bcbf398}\label{classcommon_1_1_config_loader_a474986dccfaf3638797adf4b7bcbf398}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!run@{run}}
+\index{run@{run}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Config\+Loader\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Routine of config\+Loader. \mbox{\hyperlink{classcommon_1_1_config_loader}{Config\+Loader}} routine will run in main thread. \mbox{\Hypertarget{classcommon_1_1_config_loader_a7aa83d56875ef47d75a378d827a25167}\label{classcommon_1_1_config_loader_a7aa83d56875ef47d75a378d827a25167}} 
+\index{common::ConfigLoader@{common::ConfigLoader}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!common::ConfigLoader@{common::ConfigLoader}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Config\+Loader\+::set\+Status (\begin{DoxyParamCaption}\item[{utils\+::\+Status}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\hyperlink{classcommon_1_1_life_cycle}{Life\+Cycle}} module can menage status with this function. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Config\+Loader.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,45 @@
+\hypertarget{_sensor_menager_8hpp_source}{}\doxysection{Sensor\+Menager.\+hpp}
+\label{_sensor_menager_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/SensorMenager.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/SensorMenager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iSensorMenager.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iMessageQueue.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../interfaces/iConfigMenager.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../interfaces/iSensorService.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../headers/Sensor.hpp"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_sensor_menager}{SensorMenager}} : \textcolor{keyword}{public} interface::iSensorMenager, \textcolor{keyword}{public} interface::iLifeCycleService}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         \mbox{\hyperlink{classcommon_1_1_sensor_menager}{SensorMenager}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{24         \mbox{\hyperlink{classcommon_1_1_sensor_menager}{SensorMenager}}(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);}
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_sensor_menager}{\string~SensorMenager}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27         utils::ErrorCode run() \textcolor{keyword}{override};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{32         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_sensor_menager_a66dacb0c19aee4f9a8cced7f54718c0b}{setStatus}}(utils::Status status) \textcolor{keyword}{override};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{39         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_sensor_menager_a7da72c659f872510d49835b4f71e7c56}{registerSensor}}(interface::iSensorService* sensorService) \textcolor{keyword}{override};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{46         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_sensor_menager_ad860636db3f265744a3e9549cc2b68be}{pushNotPreparedMessage}}(uint8\_t \textcolor{keywordtype}{id}, \textcolor{keywordtype}{int} message) \textcolor{keyword}{override};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keyword}{private}:}
+\DoxyCodeLine{49         interface::iLifeCycleMenager* lifeCycleMenager;}
+\DoxyCodeLine{50         interface::iLogger* logger;}
+\DoxyCodeLine{51         interface::iMessageQueue* messageQueue;}
+\DoxyCodeLine{52         interface::iConfigMenager* configLoader;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         std::vector<interface::iSensorService*> sensorsWantToBeAlive;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} deleteSensors();}
+\DoxyCodeLine{57     \};}
+\DoxyCodeLine{58 \}}
+
+\end{DoxyCode}

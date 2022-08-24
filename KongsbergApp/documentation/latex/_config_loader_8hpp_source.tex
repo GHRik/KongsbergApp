@@ -1,0 +1,62 @@
+\hypertarget{_config_loader_8hpp_source}{}\doxysection{Config\+Loader.\+hpp}
+\label{_config_loader_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/ConfigLoader.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/ConfigLoader.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iConfigMenager.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utils/config.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../include/nlohmann/json.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_config_loader}{ConfigLoader}} : \textcolor{keyword}{public} interface::iConfigMenager, \textcolor{keyword}{public} interface::iLifeCycleService}
+\DoxyCodeLine{22     \{}
+\DoxyCodeLine{23     \textcolor{keyword}{public}:}
+\DoxyCodeLine{24         \mbox{\hyperlink{classcommon_1_1_config_loader}{ConfigLoader}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{25         \mbox{\hyperlink{classcommon_1_1_config_loader}{ConfigLoader}}(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager);}
+\DoxyCodeLine{26         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_config_loader}{\string~ConfigLoader}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{33         \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{classcommon_1_1_config_loader_a930c484c7f5d64d94318aa9f921555ed}{getNumberAliveSensors}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{41         \textcolor{keyword}{const} std::vector<int> \mbox{\hyperlink{classcommon_1_1_config_loader_afc967683eb2e9c569c74bcaa6cebfb9c}{getAliveSensorsID}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{49         \textcolor{keyword}{const} std::vector<int> \mbox{\hyperlink{classcommon_1_1_config_loader_ac1d344d9954ad5b49e428cb3160318fb}{getAliveSensorsMin}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{57         \textcolor{keyword}{const} std::vector<int> \mbox{\hyperlink{classcommon_1_1_config_loader_a7743b04e60ee79810098b94ddc324701}{getAliveSensorsMax}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{65         \textcolor{keyword}{const} std::vector<int> \mbox{\hyperlink{classcommon_1_1_config_loader_aaa596b8bab722201f91de08a82618f1e}{getAliveSensorsFreq}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{73         \textcolor{keyword}{const} std::vector<std::string> \mbox{\hyperlink{classcommon_1_1_config_loader_af0cf4bc45c5533bda4b67e7895626978}{getAliveSensorsName}}() \textcolor{keyword}{const override};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{79         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_config_loader_a7aa83d56875ef47d75a378d827a25167}{setStatus}}(utils::Status status) \textcolor{keyword}{override};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{86         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_config_loader_a474986dccfaf3638797adf4b7bcbf398}{run}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{87     \textcolor{keyword}{private}:}
+\DoxyCodeLine{88         interface::iLifeCycleMenager* lifeCycleMenager;}
+\DoxyCodeLine{89         interface::iLogger* logger;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91         std::vector<int> aliveSensorsID;}
+\DoxyCodeLine{92         std::vector<int> aliveSensorsMin;}
+\DoxyCodeLine{93         std::vector<int> aliveSensorsMax;}
+\DoxyCodeLine{94         std::vector<int> aliveSensorsFreq;}
+\DoxyCodeLine{95         std::vector<std::string> aliveSensorsName;}
+\DoxyCodeLine{96         uint8\_t aliveSensorsAmount;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         \textcolor{keywordtype}{void} translateConfig(std::vector<std::vector<std::string>> \&configToTranslate);}
+\DoxyCodeLine{99         \textcolor{keywordtype}{bool} isConfigValid( \textcolor{keyword}{const} std::vector<std::vector<std::string>> \&configToValid) \textcolor{keyword}{const};}
+\DoxyCodeLine{100         \textcolor{keywordtype}{void} clearSensorsResource();}
+\DoxyCodeLine{101         \textcolor{keywordtype}{bool} isIDUnique(\textcolor{keyword}{const} std::vector<std::vector<std::string>> \&config) \textcolor{keyword}{const};}
+\DoxyCodeLine{102         \textcolor{keywordtype}{bool} isIDFromUint8( \textcolor{keyword}{const} std::vector<std::vector<std::string>> \&config) \textcolor{keyword}{const};}
+\DoxyCodeLine{103         \textcolor{keywordtype}{bool} isNumberInNecesarryField( \textcolor{keyword}{const} std::vector<std::vector<std::string>> \&config) \textcolor{keyword}{const};}
+\DoxyCodeLine{104         \textcolor{keywordtype}{bool} is\_number(\textcolor{keyword}{const} std::string\& s) \textcolor{keyword}{const};}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     \};}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}

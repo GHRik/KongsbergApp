@@ -1,0 +1,46 @@
+\hypertarget{classcommon_1_1_life_cycle}{}\doxysection{common\+::Life\+Cycle Class Reference}
+\label{classcommon_1_1_life_cycle}\index{common::LifeCycle@{common::LifeCycle}}
+Inheritance diagram for common\+::Life\+Cycle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcommon_1_1_life_cycle}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcommon_1_1_life_cycle_ab3f9276b9e06d66ff57a6c7f40695703}\label{classcommon_1_1_life_cycle_ab3f9276b9e06d66ff57a6c7f40695703}} 
+{\bfseries Life\+Cycle} (interface\+::i\+Logger $\ast$logger)
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_life_cycle_abc447bbaef2e115272b3d1c5271e5474}{run}} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_life_cycle_a84d47b2610312bebca5503bb162ca051}{stop}} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_life_cycle_a2f1a750b71967a23eea705220a9a4a08}{registry}} (interface\+::i\+Life\+Cycle\+Service $\ast$service)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcommon_1_1_life_cycle_a2f1a750b71967a23eea705220a9a4a08}\label{classcommon_1_1_life_cycle_a2f1a750b71967a23eea705220a9a4a08}} 
+\index{common::LifeCycle@{common::LifeCycle}!registry@{registry}}
+\index{registry@{registry}!common::LifeCycle@{common::LifeCycle}}
+\doxysubsubsection{\texorpdfstring{registry()}{registry()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Life\+Cycle\+::registry (\begin{DoxyParamCaption}\item[{interface\+::i\+Life\+Cycle\+Service $\ast$}]{service }\end{DoxyParamCaption})}
+
+If any service want to be active, should registry with this function. All of service which want to be active have this registry function call in constructor. \mbox{\Hypertarget{classcommon_1_1_life_cycle_abc447bbaef2e115272b3d1c5271e5474}\label{classcommon_1_1_life_cycle_abc447bbaef2e115272b3d1c5271e5474}} 
+\index{common::LifeCycle@{common::LifeCycle}!run@{run}}
+\index{run@{run}!common::LifeCycle@{common::LifeCycle}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Life\+Cycle\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Routine of life\+Cycle. \mbox{\hyperlink{classcommon_1_1_config_loader}{Config\+Loader}} routine will run in main thread. \mbox{\hyperlink{classcommon_1_1_life_cycle}{Life\+Cycle}} in this function init, start and set work on all services. \mbox{\Hypertarget{classcommon_1_1_life_cycle_a84d47b2610312bebca5503bb162ca051}\label{classcommon_1_1_life_cycle_a84d47b2610312bebca5503bb162ca051}} 
+\index{common::LifeCycle@{common::LifeCycle}!stop@{stop}}
+\index{stop@{stop}!common::LifeCycle@{common::LifeCycle}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Life\+Cycle\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+life\+Cycle in this function set stop on all services. Run in main thread. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Life\+Cycle.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,40 @@
+\hypertarget{_life_cycle_8hpp_source}{}\doxysection{Life\+Cycle.\+hpp}
+\label{_life_cycle_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/LifeCycle.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/LifeCycle.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleService.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_life_cycle}{LifeCycle}} :}
+\DoxyCodeLine{19         \textcolor{keyword}{public} interface::iLifeCycleMenager}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \mbox{\hyperlink{classcommon_1_1_life_cycle}{LifeCycle}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{23         \textcolor{keyword}{explicit} \mbox{\hyperlink{classcommon_1_1_life_cycle}{LifeCycle}}(interface::iLogger* logger);}
+\DoxyCodeLine{24         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_life_cycle}{\string~LifeCycle}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{32         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_life_cycle_abc447bbaef2e115272b3d1c5271e5474}{run}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{37         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_life_cycle_a84d47b2610312bebca5503bb162ca051}{stop}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{45         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_life_cycle_a2f1a750b71967a23eea705220a9a4a08}{registry}}(interface::iLifeCycleService* service);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keyword}{private}:}
+\DoxyCodeLine{48         \textcolor{keywordtype}{bool} isAllServicesInStatus(utils::Status status) \textcolor{keyword}{const};}
+\DoxyCodeLine{49         utils::ErrorCode setAllServicesInStatus(utils::Status status) \textcolor{keyword}{const};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         std::vector<interface::iLifeCycleService* > wantToBeAlive;}
+\DoxyCodeLine{52         interface::iLogger* logger;}
+\DoxyCodeLine{53         \textcolor{keywordtype}{bool} isFirstRun;}
+\DoxyCodeLine{54     \};}
+\DoxyCodeLine{55 \}}
+\DoxyCodeLine{56 }
+
+\end{DoxyCode}

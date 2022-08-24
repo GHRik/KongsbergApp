@@ -1,0 +1,83 @@
+\hypertarget{classcommon_1_1_listener_menager}{}\doxysection{common\+::Listener\+Menager Class Reference}
+\label{classcommon_1_1_listener_menager}\index{common::ListenerMenager@{common::ListenerMenager}}
+Inheritance diagram for common\+::Listener\+Menager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcommon_1_1_listener_menager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcommon_1_1_listener_menager_a1ad68de287edb5dec13591553f39535b}\label{classcommon_1_1_listener_menager_a1ad68de287edb5dec13591553f39535b}} 
+{\bfseries Listener\+Menager} (interface\+::i\+Logger $\ast$logger, interface\+::i\+Life\+Cycle\+Menager $\ast$life\+Cycle\+Menager, interface\+::i\+Config\+Menager $\ast$config\+Loader, interface\+::i\+Message\+Queue $\ast$message\+Queue)
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_listener_menager_aacc269aec05638673cfdc9bc1aece730}{set\+Status}} (utils\+::\+Status status) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_listener_menager_aebca993c8b38db45bd795e9c025e599c}{run}} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_listener_menager_afc778c95bcacb1f0626e7df03ef83c34}{register\+Listener}} (interface\+::i\+Listener\+Service $\ast$listener\+Service) override
+\item 
+int \mbox{\hyperlink{classcommon_1_1_listener_menager_a4d25a78fd41fd7cec18de18d9d299cd6}{pop\+Not\+Prepared\+Message}} (uint8\+\_\+t id) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_listener_menager_ab88059c79fff7bdb16e7ea3915791909}{run\+Listener}} () override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classcommon_1_1_listener_menager_a7907fc5db2bc1901179c1c364b8309bf}{log\+Output}} (const std\+::string \&output) override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcommon_1_1_listener_menager_a7907fc5db2bc1901179c1c364b8309bf}\label{classcommon_1_1_listener_menager_a7907fc5db2bc1901179c1c364b8309bf}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!logOutput@{logOutput}}
+\index{logOutput@{logOutput}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{logOutput()}{logOutput()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Listener\+Menager\+::log\+Output (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+By this function listeners by listener\+Menager can send wrapped data on logger to log results. 
+\begin{DoxyParams}{Parameters}
+{\em } & wrapped data to send on logger to log \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcommon_1_1_listener_menager_a4d25a78fd41fd7cec18de18d9d299cd6}\label{classcommon_1_1_listener_menager_a4d25a78fd41fd7cec18de18d9d299cd6}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!popNotPreparedMessage@{popNotPreparedMessage}}
+\index{popNotPreparedMessage@{popNotPreparedMessage}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{popNotPreparedMessage()}{popNotPreparedMessage()}}
+{\footnotesize\ttfamily int common\+::\+Listener\+Menager\+::pop\+Not\+Prepared\+Message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+On this function listeners by listener\+Menager get data from cyclic\+Buffor. 
+\begin{DoxyParams}{Parameters}
+{\em } & bufor id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+not wrapped data from buffor it 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcommon_1_1_listener_menager_afc778c95bcacb1f0626e7df03ef83c34}\label{classcommon_1_1_listener_menager_afc778c95bcacb1f0626e7df03ef83c34}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!registerListener@{registerListener}}
+\index{registerListener@{registerListener}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{registerListener()}{registerListener()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Listener\+Menager\+::register\+Listener (\begin{DoxyParamCaption}\item[{interface\+::i\+Listener\+Service $\ast$}]{listener\+Service }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+On this function listeners can registry to listener\+Menager. Registry mean add to vector. With pointers on listeners listener\+Menager can easly menage listeners like destroy, create etc. \mbox{\Hypertarget{classcommon_1_1_listener_menager_aebca993c8b38db45bd795e9c025e599c}\label{classcommon_1_1_listener_menager_aebca993c8b38db45bd795e9c025e599c}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!run@{run}}
+\index{run@{run}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Listener\+Menager\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Routine of \mbox{\hyperlink{classcommon_1_1_listener_menager}{Listener\+Menager}} Like turn on all listeners. \mbox{\hyperlink{classcommon_1_1_listener_menager}{Listener\+Menager}} routine will run in main thread. \mbox{\Hypertarget{classcommon_1_1_listener_menager_ab88059c79fff7bdb16e7ea3915791909}\label{classcommon_1_1_listener_menager_ab88059c79fff7bdb16e7ea3915791909}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!runListener@{runListener}}
+\index{runListener@{runListener}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{runListener()}{runListener()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Listener\+Menager\+::run\+Listener (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+This function used by listener\+Menager set all listeners in work mode. \mbox{\Hypertarget{classcommon_1_1_listener_menager_aacc269aec05638673cfdc9bc1aece730}\label{classcommon_1_1_listener_menager_aacc269aec05638673cfdc9bc1aece730}} 
+\index{common::ListenerMenager@{common::ListenerMenager}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!common::ListenerMenager@{common::ListenerMenager}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code common\+::\+Listener\+Menager\+::set\+Status (\begin{DoxyParamCaption}\item[{utils\+::\+Status}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\hyperlink{classcommon_1_1_life_cycle}{Life\+Cycle}} module can menage status with this function. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Listener\+Menager.\+hpp\end{DoxyCompactItemize}

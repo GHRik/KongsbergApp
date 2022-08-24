@@ -1,0 +1,48 @@
+\hypertarget{_listener_menager_8hpp_source}{}\doxysection{Listener\+Menager.\+hpp}
+\label{_listener_menager_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/ListenerMenager.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/ListenerMenager.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iMessageQueue.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../interfaces/iListenerService.hpp"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../interfaces/iListenerMenager.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../interfaces/iConfigMenager.hpp"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../headers/Listener.hpp"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_listener_menager}{ListenerMenager}} : \textcolor{keyword}{public} interface::iListenerMenager, \textcolor{keyword}{public} interface::iLifeCycleService}
+\DoxyCodeLine{21     \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         \mbox{\hyperlink{classcommon_1_1_listener_menager}{ListenerMenager}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{24         \mbox{\hyperlink{classcommon_1_1_listener_menager}{ListenerMenager}}(interface::iLogger* logger, interface::iLifeCycleMenager* lifeCycleMenager, interface::iConfigMenager* configLoader, interface::iMessageQueue* messageQueue);}
+\DoxyCodeLine{25         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_listener_menager}{\string~ListenerMenager}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{30         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_listener_menager_aacc269aec05638673cfdc9bc1aece730}{setStatus}}(utils::Status status) \textcolor{keyword}{override};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{36         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_listener_menager_aebca993c8b38db45bd795e9c025e599c}{run}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{43         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_listener_menager_afc778c95bcacb1f0626e7df03ef83c34}{registerListener}}(interface::iListenerService* listenerService) \textcolor{keyword}{override};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{int} \mbox{\hyperlink{classcommon_1_1_listener_menager_a4d25a78fd41fd7cec18de18d9d299cd6}{popNotPreparedMessage}}(uint8\_t \textcolor{keywordtype}{id}) \textcolor{keyword}{override};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{57         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_listener_menager_ab88059c79fff7bdb16e7ea3915791909}{runListener}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{63         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_listener_menager_a7907fc5db2bc1901179c1c364b8309bf}{logOutput}}(\textcolor{keyword}{const} std::string \&output) \textcolor{keyword}{override};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keyword}{private}:}
+\DoxyCodeLine{66         interface::iLifeCycleMenager* lifeCycleMenager;}
+\DoxyCodeLine{67         interface::iLogger* logger;}
+\DoxyCodeLine{68         interface::iConfigMenager* configLoader;}
+\DoxyCodeLine{69         interface::iMessageQueue* messageQueue;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         std::vector<interface::iListenerService*> listenerWantToBeAlive;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{void} deleteListeners();}
+\DoxyCodeLine{74     \};}
+\DoxyCodeLine{75 \}}
+
+\end{DoxyCode}

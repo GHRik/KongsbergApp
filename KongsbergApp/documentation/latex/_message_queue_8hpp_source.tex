@@ -1,0 +1,33 @@
+\hypertarget{_message_queue_8hpp_source}{}\doxysection{Message\+Queue.\+hpp}
+\label{_message_queue_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/MessageQueue.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/MessageQueue.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iMessageQueue.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../interfaces/iConfigMenager.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}../utils/config.hpp"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_message_queue}{MessageQueue}} : \textcolor{keyword}{public} interface::iMessageQueue}
+\DoxyCodeLine{20     \{}
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22         \textcolor{keyword}{explicit} \mbox{\hyperlink{classcommon_1_1_message_queue}{MessageQueue}}();}
+\DoxyCodeLine{23         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_message_queue}{\string~MessageQueue}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{29         utils::ErrorCode \mbox{\hyperlink{classcommon_1_1_message_queue_a1f76fa7f3ce8edda4205ecb9600c01e7}{pushQueue}}(uint8\_t \textcolor{keywordtype}{id}, \textcolor{keywordtype}{int} message) \textcolor{keyword}{override};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{37         \textcolor{keywordtype}{int} \mbox{\hyperlink{classcommon_1_1_message_queue_ad14c46e9420d0419f9759cb57794dbc7}{popQueue}}(uint8\_t \textcolor{keywordtype}{id}) \textcolor{keyword}{override};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} stop();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         }
+\DoxyCodeLine{42     \};}
+\DoxyCodeLine{43 \}}
+
+\end{DoxyCode}

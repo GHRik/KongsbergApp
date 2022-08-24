@@ -1,0 +1,28 @@
+\hypertarget{_logger_8hpp_source}{}\doxysection{Logger.\+hpp}
+\label{_logger_8hpp_source}\index{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/Logger.hpp@{C:/Users/pd36868/source/repos/KongsbergApp/KongsbergApp/headers/Logger.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}../interfaces/iLifeCycleMenager.hpp"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../interfaces/iLogger.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}../utils/ErrorCode.hpp"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}../utils/Status.hpp"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacecommon}{common}}}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \textcolor{keyword}{class }\mbox{\hyperlink{classcommon_1_1_logger}{Logger}} : \textcolor{keyword}{public} interface::iLogger}
+\DoxyCodeLine{18     \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \textcolor{keyword}{explicit} \mbox{\hyperlink{classcommon_1_1_logger}{Logger}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{21         \textcolor{keyword}{virtual} \mbox{\hyperlink{classcommon_1_1_logger}{\string~Logger}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{22         utils::ErrorCode logError(\textcolor{keyword}{const} std::string \&tag, \textcolor{keyword}{const} std::string \&message) \textcolor{keyword}{override};}
+\DoxyCodeLine{23         utils::ErrorCode logInfo(\textcolor{keyword}{const} std::string \&tag, \textcolor{keyword}{const} std::string \&message) \textcolor{keyword}{override};}
+\DoxyCodeLine{24     \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         std::string logEvent(\textcolor{keyword}{const} std::string \&tag, \textcolor{keyword}{const} std::string \&message) \textcolor{keyword}{const};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \};}
+\DoxyCodeLine{28 \}}
+
+\end{DoxyCode}

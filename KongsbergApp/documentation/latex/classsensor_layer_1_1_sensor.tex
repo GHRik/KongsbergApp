@@ -1,0 +1,38 @@
+\hypertarget{classsensor_layer_1_1_sensor}{}\doxysection{sensor\+Layer\+::Sensor Class Reference}
+\label{classsensor_layer_1_1_sensor}\index{sensorLayer::Sensor@{sensorLayer::Sensor}}
+Inheritance diagram for sensor\+Layer\+::Sensor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classsensor_layer_1_1_sensor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsensor_layer_1_1_sensor_aa5b55c516bb3604e9dedbf3f4b0f6b52}\label{classsensor_layer_1_1_sensor_aa5b55c516bb3604e9dedbf3f4b0f6b52}} 
+{\bfseries Sensor} (interface\+::i\+Sensor\+Menager $\ast$sensor\+Menager, int id, int freq, int min\+Range, int max\+Range)
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classsensor_layer_1_1_sensor_a365709f05851eeda5d5814faa890e2ca}{set\+Status}} (utils\+::\+Status status) override
+\item 
+utils\+::\+Error\+Code \mbox{\hyperlink{classsensor_layer_1_1_sensor_a5edb1bd1fc73e23a9e2271450789a9ee}{run}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsensor_layer_1_1_sensor_a5edb1bd1fc73e23a9e2271450789a9ee}\label{classsensor_layer_1_1_sensor_a5edb1bd1fc73e23a9e2271450789a9ee}} 
+\index{sensorLayer::Sensor@{sensorLayer::Sensor}!run@{run}}
+\index{run@{run}!sensorLayer::Sensor@{sensorLayer::Sensor}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code sensor\+Layer\+::\+Sensor\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+Routine have own thread. On this routine \mbox{\hyperlink{classsensor_layer_1_1_sensor}{Sensor}} create random data from min\+Value to max\+Value. This data is going to be pushed on cyclic\+Buffer. \mbox{\Hypertarget{classsensor_layer_1_1_sensor_a365709f05851eeda5d5814faa890e2ca}\label{classsensor_layer_1_1_sensor_a365709f05851eeda5d5814faa890e2ca}} 
+\index{sensorLayer::Sensor@{sensorLayer::Sensor}!setStatus@{setStatus}}
+\index{setStatus@{setStatus}!sensorLayer::Sensor@{sensorLayer::Sensor}}
+\doxysubsubsection{\texorpdfstring{setStatus()}{setStatus()}}
+{\footnotesize\ttfamily utils\+::\+Error\+Code sensor\+Layer\+::\+Sensor\+::set\+Status (\begin{DoxyParamCaption}\item[{utils\+::\+Status}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+By this function Sensor\+Menager can easy menage \mbox{\hyperlink{classsensor_layer_1_1_sensor}{Sensor}} state. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/pd36868/source/repos/\+Kongsberg\+App/\+Kongsberg\+App/headers/Sensor.\+hpp\end{DoxyCompactItemize}

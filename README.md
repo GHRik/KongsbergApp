@@ -4,7 +4,7 @@
 1. [ Description ](#des)
 2. [ Set config ](#config)
 3. [ Architecture ](#archi)
-4. [ Documentation ] (#doc)
+4. [ Documentation ](#doc)
 5. [ Features ](#fea)
 6. [ To-Dos ](#todo)
 7. [ Results ](#res)
